@@ -1,0 +1,443 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B6797FB21AF29DF700516697 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6797FB11AF29DF700516697 /* AppDelegate.swift */; };
+		B6797FB51AF29DF700516697 /* Yoda_Demo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B6797FB31AF29DF700516697 /* Yoda_Demo.xcdatamodeld */; };
+		B6797FB71AF29DF700516697 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6797FB61AF29DF700516697 /* ViewController.swift */; };
+		B6797FBA1AF29DF700516697 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6797FB81AF29DF700516697 /* Main.storyboard */; };
+		B6797FBC1AF29DF700516697 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6797FBB1AF29DF700516697 /* Images.xcassets */; };
+		B6797FBF1AF29DF700516697 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6797FBD1AF29DF700516697 /* LaunchScreen.xib */; };
+		B6797FCB1AF29DF700516697 /* Yoda_DemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6797FCA1AF29DF700516697 /* Yoda_DemoTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B6797FC51AF29DF700516697 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B6797FA41AF29DF700516697 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B6797FAB1AF29DF700516697;
+			remoteInfo = "Yoda Demo";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B6797FAC1AF29DF700516697 /* Yoda Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Yoda Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6797FB01AF29DF700516697 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B6797FB11AF29DF700516697 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B6797FB41AF29DF700516697 /* Yoda_Demo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Yoda_Demo.xcdatamodel; sourceTree = "<group>"; };
+		B6797FB61AF29DF700516697 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B6797FB91AF29DF700516697 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B6797FBB1AF29DF700516697 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		B6797FBE1AF29DF700516697 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		B6797FC41AF29DF700516697 /* Yoda DemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Yoda DemoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6797FC91AF29DF700516697 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B6797FCA1AF29DF700516697 /* Yoda_DemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Yoda_DemoTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B6797FA91AF29DF700516697 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B6797FC11AF29DF700516697 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B6797FA31AF29DF700516697 = {
+			isa = PBXGroup;
+			children = (
+				B6797FAE1AF29DF700516697 /* Yoda Demo */,
+				B6797FC71AF29DF700516697 /* Yoda DemoTests */,
+				B6797FAD1AF29DF700516697 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B6797FAD1AF29DF700516697 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B6797FAC1AF29DF700516697 /* Yoda Demo.app */,
+				B6797FC41AF29DF700516697 /* Yoda DemoTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B6797FAE1AF29DF700516697 /* Yoda Demo */ = {
+			isa = PBXGroup;
+			children = (
+				B6797FB11AF29DF700516697 /* AppDelegate.swift */,
+				B6797FB61AF29DF700516697 /* ViewController.swift */,
+				B6797FB81AF29DF700516697 /* Main.storyboard */,
+				B6797FBB1AF29DF700516697 /* Images.xcassets */,
+				B6797FBD1AF29DF700516697 /* LaunchScreen.xib */,
+				B6797FB31AF29DF700516697 /* Yoda_Demo.xcdatamodeld */,
+				B6797FAF1AF29DF700516697 /* Supporting Files */,
+			);
+			path = "Yoda Demo";
+			sourceTree = "<group>";
+		};
+		B6797FAF1AF29DF700516697 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B6797FB01AF29DF700516697 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B6797FC71AF29DF700516697 /* Yoda DemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				B6797FCA1AF29DF700516697 /* Yoda_DemoTests.swift */,
+				B6797FC81AF29DF700516697 /* Supporting Files */,
+			);
+			path = "Yoda DemoTests";
+			sourceTree = "<group>";
+		};
+		B6797FC81AF29DF700516697 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B6797FC91AF29DF700516697 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B6797FAB1AF29DF700516697 /* Yoda Demo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B6797FCE1AF29DF700516697 /* Build configuration list for PBXNativeTarget "Yoda Demo" */;
+			buildPhases = (
+				B6797FA81AF29DF700516697 /* Sources */,
+				B6797FA91AF29DF700516697 /* Frameworks */,
+				B6797FAA1AF29DF700516697 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Yoda Demo";
+			productName = "Yoda Demo";
+			productReference = B6797FAC1AF29DF700516697 /* Yoda Demo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B6797FC31AF29DF700516697 /* Yoda DemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B6797FD11AF29DF700516697 /* Build configuration list for PBXNativeTarget "Yoda DemoTests" */;
+			buildPhases = (
+				B6797FC01AF29DF700516697 /* Sources */,
+				B6797FC11AF29DF700516697 /* Frameworks */,
+				B6797FC21AF29DF700516697 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B6797FC61AF29DF700516697 /* PBXTargetDependency */,
+			);
+			name = "Yoda DemoTests";
+			productName = "Yoda DemoTests";
+			productReference = B6797FC41AF29DF700516697 /* Yoda DemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B6797FA41AF29DF700516697 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = "Aaron Sheah";
+				TargetAttributes = {
+					B6797FAB1AF29DF700516697 = {
+						CreatedOnToolsVersion = 6.3.1;
+					};
+					B6797FC31AF29DF700516697 = {
+						CreatedOnToolsVersion = 6.3.1;
+						TestTargetID = B6797FAB1AF29DF700516697;
+					};
+				};
+			};
+			buildConfigurationList = B6797FA71AF29DF700516697 /* Build configuration list for PBXProject "Yoda Demo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B6797FA31AF29DF700516697;
+			productRefGroup = B6797FAD1AF29DF700516697 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B6797FAB1AF29DF700516697 /* Yoda Demo */,
+				B6797FC31AF29DF700516697 /* Yoda DemoTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B6797FAA1AF29DF700516697 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B6797FBA1AF29DF700516697 /* Main.storyboard in Resources */,
+				B6797FBF1AF29DF700516697 /* LaunchScreen.xib in Resources */,
+				B6797FBC1AF29DF700516697 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B6797FC21AF29DF700516697 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B6797FA81AF29DF700516697 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B6797FB71AF29DF700516697 /* ViewController.swift in Sources */,
+				B6797FB21AF29DF700516697 /* AppDelegate.swift in Sources */,
+				B6797FB51AF29DF700516697 /* Yoda_Demo.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B6797FC01AF29DF700516697 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B6797FCB1AF29DF700516697 /* Yoda_DemoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B6797FC61AF29DF700516697 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B6797FAB1AF29DF700516697 /* Yoda Demo */;
+			targetProxy = B6797FC51AF29DF700516697 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B6797FB81AF29DF700516697 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B6797FB91AF29DF700516697 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B6797FBD1AF29DF700516697 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B6797FBE1AF29DF700516697 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B6797FCC1AF29DF700516697 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		B6797FCD1AF29DF700516697 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B6797FCF1AF29DF700516697 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Yoda Demo/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		B6797FD01AF29DF700516697 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Yoda Demo/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		B6797FD21AF29DF700516697 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Yoda DemoTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Yoda Demo.app/Yoda Demo";
+			};
+			name = Debug;
+		};
+		B6797FD31AF29DF700516697 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Yoda DemoTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Yoda Demo.app/Yoda Demo";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B6797FA71AF29DF700516697 /* Build configuration list for PBXProject "Yoda Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B6797FCC1AF29DF700516697 /* Debug */,
+				B6797FCD1AF29DF700516697 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B6797FCE1AF29DF700516697 /* Build configuration list for PBXNativeTarget "Yoda Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B6797FCF1AF29DF700516697 /* Debug */,
+				B6797FD01AF29DF700516697 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		B6797FD11AF29DF700516697 /* Build configuration list for PBXNativeTarget "Yoda DemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B6797FD21AF29DF700516697 /* Debug */,
+				B6797FD31AF29DF700516697 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B6797FB31AF29DF700516697 /* Yoda_Demo.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B6797FB41AF29DF700516697 /* Yoda_Demo.xcdatamodel */,
+			);
+			currentVersion = B6797FB41AF29DF700516697 /* Yoda_Demo.xcdatamodel */;
+			path = Yoda_Demo.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = B6797FA41AF29DF700516697 /* Project object */;
+}
