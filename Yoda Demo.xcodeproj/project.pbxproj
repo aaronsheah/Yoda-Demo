@@ -7,13 +7,49 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B61B18F51AFBD88300E2C72B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61B18F41AFBD88300E2C72B /* DetailViewController.swift */; };
+		B61B18F71AFC15B700E2C72B /* whipped-cream-cereal.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B61B18F61AFC15B700E2C72B /* whipped-cream-cereal.jpg */; };
+		B61B18F91AFC15FF00E2C72B /* bacon-and-eggs.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B61B18F81AFC15FF00E2C72B /* bacon-and-eggs.jpg */; };
+		B61B18FB1AFC167100E2C72B /* cheese-sandwich.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B61B18FA1AFC167100E2C72B /* cheese-sandwich.jpg */; };
+		B61B18FF1AFC173C00E2C72B /* rice-pudding.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B61B18FE1AFC173C00E2C72B /* rice-pudding.jpg */; };
+		B61B19011AFC17F900E2C72B /* oats.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = B61B19001AFC17F900E2C72B /* oats.jpeg */; };
+		B61B19031AFC186000E2C72B /* french-toast.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B61B19021AFC186000E2C72B /* french-toast.jpg */; };
+		B61B19051AFC189700E2C72B /* barley.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B61B19041AFC189700E2C72B /* barley.jpg */; };
+		B61B19071AFC190200E2C72B /* eggs-and-toast.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B61B19061AFC190200E2C72B /* eggs-and-toast.jpg */; };
+		B61B19091AFC19BA00E2C72B /* breakfast.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B61B19081AFC19BA00E2C72B /* breakfast.jpg */; };
+		B66325D71AF6CD61006F313A /* VitalsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66325D61AF6CD61006F313A /* VitalsViewController.swift */; };
+		B66325E41AF6D51A006F313A /* BEMAverageLine.m in Sources */ = {isa = PBXBuildFile; fileRef = B66325DB1AF6D51A006F313A /* BEMAverageLine.m */; };
+		B66325E51AF6D51A006F313A /* BEMCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = B66325DD1AF6D51A006F313A /* BEMCircle.m */; };
+		B66325E61AF6D51A006F313A /* BEMLine.m in Sources */ = {isa = PBXBuildFile; fileRef = B66325DF1AF6D51A006F313A /* BEMLine.m */; };
+		B66325E71AF6D51A006F313A /* BEMPermanentPopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = B66325E11AF6D51A006F313A /* BEMPermanentPopupView.m */; };
+		B66325E81AF6D51A006F313A /* BEMSimpleLineGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = B66325E31AF6D51A006F313A /* BEMSimpleLineGraphView.m */; };
 		B6797FB21AF29DF700516697 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6797FB11AF29DF700516697 /* AppDelegate.swift */; };
 		B6797FB51AF29DF700516697 /* Yoda_Demo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B6797FB31AF29DF700516697 /* Yoda_Demo.xcdatamodeld */; };
-		B6797FB71AF29DF700516697 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6797FB61AF29DF700516697 /* ViewController.swift */; };
 		B6797FBA1AF29DF700516697 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6797FB81AF29DF700516697 /* Main.storyboard */; };
 		B6797FBC1AF29DF700516697 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6797FBB1AF29DF700516697 /* Images.xcassets */; };
 		B6797FBF1AF29DF700516697 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6797FBD1AF29DF700516697 /* LaunchScreen.xib */; };
 		B6797FCB1AF29DF700516697 /* Yoda_DemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6797FCA1AF29DF700516697 /* Yoda_DemoTests.swift */; };
+		B6797FD61AF29F9900516697 /* food.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6797FD51AF29F9900516697 /* food.swift */; };
+		B6797FDA1AF2A4D200516697 /* FoodLibraryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6797FD91AF2A4D200516697 /* FoodLibraryTableViewController.swift */; };
+		B6797FEB1AF2B9F100516697 /* yoda.png in Resources */ = {isa = PBXBuildFile; fileRef = B6797FEA1AF2B9F000516697 /* yoda.png */; };
+		B6797FF21AF2BCB700516697 /* 900YEARS.WAV in Resources */ = {isa = PBXBuildFile; fileRef = B6797FED1AF2BCB700516697 /* 900YEARS.WAV */; };
+		B6797FF31AF2BCB700516697 /* GETSOBIG.WAV in Resources */ = {isa = PBXBuildFile; fileRef = B6797FEE1AF2BCB700516697 /* GETSOBIG.WAV */; };
+		B6797FF41AF2BCB700516697 /* SEEKYODA.WAV in Resources */ = {isa = PBXBuildFile; fileRef = B6797FEF1AF2BCB700516697 /* SEEKYODA.WAV */; };
+		B6797FF51AF2BCB700516697 /* YODA3.WAV in Resources */ = {isa = PBXBuildFile; fileRef = B6797FF01AF2BCB700516697 /* YODA3.WAV */; };
+		B6797FFC1AF2BCD300516697 /* cereal.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B6797FF61AF2BCD300516697 /* cereal.jpg */; };
+		B6797FFD1AF2BCD300516697 /* mashed-potato.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B6797FF71AF2BCD300516697 /* mashed-potato.jpg */; };
+		B6797FFE1AF2BCD300516697 /* pasta.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B6797FF81AF2BCD300516697 /* pasta.jpg */; };
+		B6797FFF1AF2BCD300516697 /* pizza.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B6797FF91AF2BCD300516697 /* pizza.jpg */; };
+		B67980001AF2BCD300516697 /* sandwich.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B6797FFA1AF2BCD300516697 /* sandwich.jpg */; };
+		B67980021AF2BD6600516697 /* YodaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67980011AF2BD6600516697 /* YodaViewController.swift */; };
+		B67980081AF2C15700516697 /* ice-cream.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B67980031AF2C15700516697 /* ice-cream.jpg */; };
+		B67980091AF2C15700516697 /* salad.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B67980041AF2C15700516697 /* salad.jpg */; };
+		B679800A1AF2C15700516697 /* fried-chicken.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B67980051AF2C15700516697 /* fried-chicken.jpg */; };
+		B679800B1AF2C15700516697 /* fries.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B67980061AF2C15700516697 /* fries.jpg */; };
+		B679800C1AF2C15700516697 /* big-mac.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B67980071AF2C15700516697 /* big-mac.jpg */; };
+		B679800E1AF2C7F100516697 /* eat.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B679800D1AF2C7F100516697 /* eat.mp3 */; };
+		B67980101AF2C91600516697 /* speech.png in Resources */ = {isa = PBXBuildFile; fileRef = B679800F1AF2C91600516697 /* speech.png */; };
+		B67980121AF2DEE700516697 /* graph.png in Resources */ = {isa = PBXBuildFile; fileRef = B67980111AF2DEE700516697 /* graph.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,17 +63,58 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B61B18F41AFBD88300E2C72B /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		B61B18F61AFC15B700E2C72B /* whipped-cream-cereal.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "whipped-cream-cereal.jpg"; sourceTree = "<group>"; };
+		B61B18F81AFC15FF00E2C72B /* bacon-and-eggs.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "bacon-and-eggs.jpg"; sourceTree = "<group>"; };
+		B61B18FA1AFC167100E2C72B /* cheese-sandwich.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "cheese-sandwich.jpg"; sourceTree = "<group>"; };
+		B61B18FE1AFC173C00E2C72B /* rice-pudding.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "rice-pudding.jpg"; sourceTree = "<group>"; };
+		B61B19001AFC17F900E2C72B /* oats.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = oats.jpeg; sourceTree = "<group>"; };
+		B61B19021AFC186000E2C72B /* french-toast.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "french-toast.jpg"; sourceTree = "<group>"; };
+		B61B19041AFC189700E2C72B /* barley.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = barley.jpg; sourceTree = "<group>"; };
+		B61B19061AFC190200E2C72B /* eggs-and-toast.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "eggs-and-toast.jpg"; sourceTree = "<group>"; };
+		B61B19081AFC19BA00E2C72B /* breakfast.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = breakfast.jpg; sourceTree = "<group>"; };
+		B66325D61AF6CD61006F313A /* VitalsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VitalsViewController.swift; sourceTree = "<group>"; };
+		B66325DA1AF6D51A006F313A /* BEMAverageLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEMAverageLine.h; sourceTree = "<group>"; };
+		B66325DB1AF6D51A006F313A /* BEMAverageLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEMAverageLine.m; sourceTree = "<group>"; };
+		B66325DC1AF6D51A006F313A /* BEMCircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEMCircle.h; sourceTree = "<group>"; };
+		B66325DD1AF6D51A006F313A /* BEMCircle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEMCircle.m; sourceTree = "<group>"; };
+		B66325DE1AF6D51A006F313A /* BEMLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEMLine.h; sourceTree = "<group>"; };
+		B66325DF1AF6D51A006F313A /* BEMLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEMLine.m; sourceTree = "<group>"; };
+		B66325E01AF6D51A006F313A /* BEMPermanentPopupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEMPermanentPopupView.h; sourceTree = "<group>"; };
+		B66325E11AF6D51A006F313A /* BEMPermanentPopupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEMPermanentPopupView.m; sourceTree = "<group>"; };
+		B66325E21AF6D51A006F313A /* BEMSimpleLineGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEMSimpleLineGraphView.h; sourceTree = "<group>"; };
+		B66325E31AF6D51A006F313A /* BEMSimpleLineGraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEMSimpleLineGraphView.m; sourceTree = "<group>"; };
 		B6797FAC1AF29DF700516697 /* Yoda Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Yoda Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6797FB01AF29DF700516697 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B6797FB11AF29DF700516697 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B6797FB41AF29DF700516697 /* Yoda_Demo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Yoda_Demo.xcdatamodel; sourceTree = "<group>"; };
-		B6797FB61AF29DF700516697 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B6797FB91AF29DF700516697 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B6797FBB1AF29DF700516697 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B6797FBE1AF29DF700516697 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		B6797FC41AF29DF700516697 /* Yoda DemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Yoda DemoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6797FC91AF29DF700516697 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B6797FCA1AF29DF700516697 /* Yoda_DemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Yoda_DemoTests.swift; sourceTree = "<group>"; };
+		B6797FD51AF29F9900516697 /* food.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = food.swift; sourceTree = "<group>"; };
+		B6797FD91AF2A4D200516697 /* FoodLibraryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodLibraryTableViewController.swift; sourceTree = "<group>"; };
+		B6797FEA1AF2B9F000516697 /* yoda.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yoda.png; sourceTree = "<group>"; };
+		B6797FED1AF2BCB700516697 /* 900YEARS.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 900YEARS.WAV; sourceTree = "<group>"; };
+		B6797FEE1AF2BCB700516697 /* GETSOBIG.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = GETSOBIG.WAV; sourceTree = "<group>"; };
+		B6797FEF1AF2BCB700516697 /* SEEKYODA.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = SEEKYODA.WAV; sourceTree = "<group>"; };
+		B6797FF01AF2BCB700516697 /* YODA3.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = YODA3.WAV; sourceTree = "<group>"; };
+		B6797FF61AF2BCD300516697 /* cereal.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cereal.jpg; sourceTree = "<group>"; };
+		B6797FF71AF2BCD300516697 /* mashed-potato.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "mashed-potato.jpg"; sourceTree = "<group>"; };
+		B6797FF81AF2BCD300516697 /* pasta.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pasta.jpg; sourceTree = "<group>"; };
+		B6797FF91AF2BCD300516697 /* pizza.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pizza.jpg; sourceTree = "<group>"; };
+		B6797FFA1AF2BCD300516697 /* sandwich.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sandwich.jpg; sourceTree = "<group>"; };
+		B67980011AF2BD6600516697 /* YodaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YodaViewController.swift; sourceTree = "<group>"; };
+		B67980031AF2C15700516697 /* ice-cream.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "ice-cream.jpg"; sourceTree = "<group>"; };
+		B67980041AF2C15700516697 /* salad.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = salad.jpg; sourceTree = "<group>"; };
+		B67980051AF2C15700516697 /* fried-chicken.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "fried-chicken.jpg"; sourceTree = "<group>"; };
+		B67980061AF2C15700516697 /* fries.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = fries.jpg; sourceTree = "<group>"; };
+		B67980071AF2C15700516697 /* big-mac.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "big-mac.jpg"; sourceTree = "<group>"; };
+		B679800D1AF2C7F100516697 /* eat.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = eat.mp3; sourceTree = "<group>"; };
+		B679800F1AF2C91600516697 /* speech.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = speech.png; path = Images.xcassets/speech.png; sourceTree = "<group>"; };
+		B67980111AF2DEE700516697 /* graph.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = graph.png; path = Images.xcassets/graph.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +135,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B66325D81AF6CD79006F313A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B6797FB11AF29DF700516697 /* AppDelegate.swift */,
+				B6797FD91AF2A4D200516697 /* FoodLibraryTableViewController.swift */,
+				B67980011AF2BD6600516697 /* YodaViewController.swift */,
+				B66325D61AF6CD61006F313A /* VitalsViewController.swift */,
+				B61B18F41AFBD88300E2C72B /* DetailViewController.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		B66325D91AF6D51A006F313A /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				B66325DA1AF6D51A006F313A /* BEMAverageLine.h */,
+				B66325DB1AF6D51A006F313A /* BEMAverageLine.m */,
+				B66325DC1AF6D51A006F313A /* BEMCircle.h */,
+				B66325DD1AF6D51A006F313A /* BEMCircle.m */,
+				B66325DE1AF6D51A006F313A /* BEMLine.h */,
+				B66325DF1AF6D51A006F313A /* BEMLine.m */,
+				B66325E01AF6D51A006F313A /* BEMPermanentPopupView.h */,
+				B66325E11AF6D51A006F313A /* BEMPermanentPopupView.m */,
+				B66325E21AF6D51A006F313A /* BEMSimpleLineGraphView.h */,
+				B66325E31AF6D51A006F313A /* BEMSimpleLineGraphView.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
 		B6797FA31AF29DF700516697 = {
 			isa = PBXGroup;
 			children = (
@@ -79,12 +185,16 @@
 		B6797FAE1AF29DF700516697 /* Yoda Demo */ = {
 			isa = PBXGroup;
 			children = (
-				B6797FB11AF29DF700516697 /* AppDelegate.swift */,
-				B6797FB61AF29DF700516697 /* ViewController.swift */,
+				B6797FD41AF29F8300516697 /* Yoda App Classes */,
+				B66325D81AF6CD79006F313A /* Views */,
+				B6797FFB1AF2BCD300516697 /* Food Thumbnails */,
 				B6797FB81AF29DF700516697 /* Main.storyboard */,
+				B66325D91AF6D51A006F313A /* Classes */,
+				B6797FEC1AF2BA0000516697 /* Pictures */,
 				B6797FBB1AF29DF700516697 /* Images.xcassets */,
 				B6797FBD1AF29DF700516697 /* LaunchScreen.xib */,
 				B6797FB31AF29DF700516697 /* Yoda_Demo.xcdatamodeld */,
+				B6797FF11AF2BCB700516697 /* Sounds */,
 				B6797FAF1AF29DF700516697 /* Supporting Files */,
 			);
 			path = "Yoda Demo";
@@ -113,6 +223,64 @@
 				B6797FC91AF29DF700516697 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B6797FD41AF29F8300516697 /* Yoda App Classes */ = {
+			isa = PBXGroup;
+			children = (
+				B6797FD51AF29F9900516697 /* food.swift */,
+			);
+			name = "Yoda App Classes";
+			sourceTree = "<group>";
+		};
+		B6797FEC1AF2BA0000516697 /* Pictures */ = {
+			isa = PBXGroup;
+			children = (
+				B679800F1AF2C91600516697 /* speech.png */,
+				B67980111AF2DEE700516697 /* graph.png */,
+				B6797FEA1AF2B9F000516697 /* yoda.png */,
+			);
+			name = Pictures;
+			sourceTree = "<group>";
+		};
+		B6797FF11AF2BCB700516697 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				B679800D1AF2C7F100516697 /* eat.mp3 */,
+				B6797FED1AF2BCB700516697 /* 900YEARS.WAV */,
+				B6797FEE1AF2BCB700516697 /* GETSOBIG.WAV */,
+				B6797FEF1AF2BCB700516697 /* SEEKYODA.WAV */,
+				B6797FF01AF2BCB700516697 /* YODA3.WAV */,
+			);
+			name = Sounds;
+			path = "../Yoda Demo.xcodeproj/Sounds";
+			sourceTree = "<group>";
+		};
+		B6797FFB1AF2BCD300516697 /* Food Thumbnails */ = {
+			isa = PBXGroup;
+			children = (
+				B61B18F61AFC15B700E2C72B /* whipped-cream-cereal.jpg */,
+				B67980031AF2C15700516697 /* ice-cream.jpg */,
+				B67980041AF2C15700516697 /* salad.jpg */,
+				B67980051AF2C15700516697 /* fried-chicken.jpg */,
+				B67980061AF2C15700516697 /* fries.jpg */,
+				B67980071AF2C15700516697 /* big-mac.jpg */,
+				B6797FF61AF2BCD300516697 /* cereal.jpg */,
+				B6797FF71AF2BCD300516697 /* mashed-potato.jpg */,
+				B6797FF81AF2BCD300516697 /* pasta.jpg */,
+				B6797FF91AF2BCD300516697 /* pizza.jpg */,
+				B6797FFA1AF2BCD300516697 /* sandwich.jpg */,
+				B61B18F81AFC15FF00E2C72B /* bacon-and-eggs.jpg */,
+				B61B18FA1AFC167100E2C72B /* cheese-sandwich.jpg */,
+				B61B18FE1AFC173C00E2C72B /* rice-pudding.jpg */,
+				B61B19001AFC17F900E2C72B /* oats.jpeg */,
+				B61B19021AFC186000E2C72B /* french-toast.jpg */,
+				B61B19041AFC189700E2C72B /* barley.jpg */,
+				B61B19061AFC190200E2C72B /* eggs-and-toast.jpg */,
+				B61B19081AFC19BA00E2C72B /* breakfast.jpg */,
+			);
+			name = "Food Thumbnails";
+			path = "../Yoda Demo.xcodeproj/Food Thumbnails";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,7 +365,34 @@
 			files = (
 				B6797FBA1AF29DF700516697 /* Main.storyboard in Resources */,
 				B6797FBF1AF29DF700516697 /* LaunchScreen.xib in Resources */,
+				B61B19091AFC19BA00E2C72B /* breakfast.jpg in Resources */,
+				B67980081AF2C15700516697 /* ice-cream.jpg in Resources */,
+				B61B18F91AFC15FF00E2C72B /* bacon-and-eggs.jpg in Resources */,
+				B6797FFF1AF2BCD300516697 /* pizza.jpg in Resources */,
+				B6797FFD1AF2BCD300516697 /* mashed-potato.jpg in Resources */,
+				B67980091AF2C15700516697 /* salad.jpg in Resources */,
+				B6797FF41AF2BCB700516697 /* SEEKYODA.WAV in Resources */,
+				B6797FF31AF2BCB700516697 /* GETSOBIG.WAV in Resources */,
+				B61B18FB1AFC167100E2C72B /* cheese-sandwich.jpg in Resources */,
+				B61B19011AFC17F900E2C72B /* oats.jpeg in Resources */,
+				B6797FF21AF2BCB700516697 /* 900YEARS.WAV in Resources */,
+				B67980121AF2DEE700516697 /* graph.png in Resources */,
+				B61B19031AFC186000E2C72B /* french-toast.jpg in Resources */,
+				B61B18F71AFC15B700E2C72B /* whipped-cream-cereal.jpg in Resources */,
+				B67980101AF2C91600516697 /* speech.png in Resources */,
+				B6797FFE1AF2BCD300516697 /* pasta.jpg in Resources */,
+				B6797FFC1AF2BCD300516697 /* cereal.jpg in Resources */,
+				B67980001AF2BCD300516697 /* sandwich.jpg in Resources */,
+				B679800C1AF2C15700516697 /* big-mac.jpg in Resources */,
+				B61B19071AFC190200E2C72B /* eggs-and-toast.jpg in Resources */,
+				B679800A1AF2C15700516697 /* fried-chicken.jpg in Resources */,
+				B6797FF51AF2BCB700516697 /* YODA3.WAV in Resources */,
+				B6797FEB1AF2B9F100516697 /* yoda.png in Resources */,
+				B679800E1AF2C7F100516697 /* eat.mp3 in Resources */,
+				B61B18FF1AFC173C00E2C72B /* rice-pudding.jpg in Resources */,
+				B679800B1AF2C15700516697 /* fries.jpg in Resources */,
 				B6797FBC1AF29DF700516697 /* Images.xcassets in Resources */,
+				B61B19051AFC189700E2C72B /* barley.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,9 +410,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B6797FB71AF29DF700516697 /* ViewController.swift in Sources */,
+				B66325E81AF6D51A006F313A /* BEMSimpleLineGraphView.m in Sources */,
+				B6797FD61AF29F9900516697 /* food.swift in Sources */,
+				B66325E41AF6D51A006F313A /* BEMAverageLine.m in Sources */,
+				B61B18F51AFBD88300E2C72B /* DetailViewController.swift in Sources */,
+				B67980021AF2BD6600516697 /* YodaViewController.swift in Sources */,
+				B66325E71AF6D51A006F313A /* BEMPermanentPopupView.m in Sources */,
 				B6797FB21AF29DF700516697 /* AppDelegate.swift in Sources */,
+				B66325E51AF6D51A006F313A /* BEMCircle.m in Sources */,
+				B66325E61AF6D51A006F313A /* BEMLine.m in Sources */,
+				B6797FDA1AF2A4D200516697 /* FoodLibraryTableViewController.swift in Sources */,
 				B6797FB51AF29DF700516697 /* Yoda_Demo.xcdatamodeld in Sources */,
+				B66325D71AF6CD61006F313A /* VitalsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,9 +550,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "Yoda Demo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/aaronsheah/Documents/Yoda Demo/Yoda Demo/Classes/BEMSimpleLineGraphView.h";
 			};
 			name = Debug;
 		};
@@ -356,9 +562,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "Yoda Demo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/aaronsheah/Documents/Yoda Demo/Yoda Demo/Classes/BEMSimpleLineGraphView.h";
 			};
 			name = Release;
 		};
@@ -415,6 +623,7 @@
 				B6797FD01AF29DF700516697 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B6797FD11AF29DF700516697 /* Build configuration list for PBXNativeTarget "Yoda DemoTests" */ = {
 			isa = XCConfigurationList;
@@ -423,6 +632,7 @@
 				B6797FD31AF29DF700516697 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
