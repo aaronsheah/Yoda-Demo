@@ -8,8 +8,7 @@
 
 import UIKit
 
-
-class DetailViewController: UIViewController, BEMSimpleLineGraphDelegate {
+class DetailViewController: UIViewController, BEMSimpleLineGraphDelegate{
 
     var food:Food = foodLibrary[0]
     
@@ -18,6 +17,8 @@ class DetailViewController: UIViewController, BEMSimpleLineGraphDelegate {
 
     @IBOutlet weak var feedYodaButton: UIButton!
     @IBAction func feedYodaAction(sender: AnyObject) {
+
+        println("feed")
     }
 
     @IBOutlet weak var descLabel: UILabel!

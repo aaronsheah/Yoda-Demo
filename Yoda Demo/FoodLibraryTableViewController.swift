@@ -1,5 +1,6 @@
 import UIKit
 import AVFoundation
+import CoreBluetooth
 
 var detailViewController: DetailViewController? = nil
 
@@ -24,24 +25,112 @@ class foodCell: UITableViewCell {
     }
 }
 
-class FoodLibraryTableViewController: UITableViewController, UITableViewDelegate {
+class FoodLibraryTableViewController: UITableViewController, UITableViewDelegate, CBPeripheralManagerDelegate {
     
+    @IBOutlet weak var toggle: UISwitch!
+    @IBAction func startAdvertisingSwitch(sender: AnyObject) {
+        if toggle.on {
+            peripheralManager.startAdvertising([CBAdvertisementDataServiceUUIDsKey:[serviceUUID]])
+        }
+        else {
+            peripheralManager.stopAdvertising()
+        }
+    }
+    
+    @IBOutlet weak var connectionLabel: UILabel!
 
+    var peripheralManager:CBPeripheralManager!
+    var transferCharacteristic:CBMutableCharacteristic!
+    
+    var serviceUUID = CBUUID(string: "ABCD")
+    var characteristicUUID = CBUUID(string: "0123")
+    
+    var dataToSend:NSData!
+    
+    var readyToSend:Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        connectionLabel.textColor = UIColor.redColor()
+        
         // tableView.allowsSelection = false
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        peripheralManager = CBPeripheralManager(delegate: self, queue: nil)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
 
+    // MARK: - Peripheral Manger Delegate
+    
+    func peripheralManagerDidUpdateState(peripheral: CBPeripheralManager!) {
+        if(peripheral.state != CBPeripheralManagerState.PoweredOn) {
+            connectionLabel.textColor = UIColor.redColor()
+            return
+        }
+        
+        println("peripheralManager powered on")
+        
+        // Build characteristic
+        transferCharacteristic = CBMutableCharacteristic(type: characteristicUUID, properties: CBCharacteristicProperties.Notify, value: nil, permissions: CBAttributePermissions.Readable)
+        
+        // Build Service
+        var transferService:CBMutableService = CBMutableService(type: serviceUUID, primary: true)
+        
+        // Add Characteristic to Service
+        transferService.characteristics = [transferCharacteristic]
+        
+        // Add Service to Peripheral Manager
+        peripheralManager.addService(transferService)
+    }
+    
+    func peripheralManager(peripheral: CBPeripheralManager!, central: CBCentral!, didSubscribeToCharacteristic characteristic: CBCharacteristic!) {
+        println("Central subscribed to characteristic")
+        
+        connectionLabel.textColor = UIColor.greenColor()
+        
+        // Ready to Send
+        readyToSend = true
+        
+    }
+    
+    func peripheralManager(peripheral: CBPeripheralManager!, central: CBCentral!, didUnsubscribeFromCharacteristic characteristic: CBCharacteristic!) {
+        println("Central UNsubscribed from characteristic")
+        
+        connectionLabel.textColor = UIColor.redColor()
+        
+        readyToSend = false
+    }
+    
+    func peripheralManagerIsReadyToUpdateSubscribers(peripheral: CBPeripheralManager!) {
+        return
+    }
+    
+    func sendData(data:String) {
+        if(!readyToSend) {
+            println("Not Ready to Send : \(data)")
+            return
+        }
+        
+        var didSend:Bool = true
+        
+        let chunk = (data as NSString).dataUsingEncoding(NSUTF8StringEncoding)
+        
+        didSend = peripheralManager.updateValue(chunk, forCharacteristic: transferCharacteristic, onSubscribedCentrals: nil)
+        
+        if(didSend) {
+            println("Sent : \(data)")
+        }
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -78,6 +167,7 @@ class FoodLibraryTableViewController: UITableViewController, UITableViewDelegate
         if detailViewController != nil {
             detailViewController!.food = foodLibrary[indexPath.row]
         }
+        sendData(String(indexPath.row + 1))
         println(indexPath.row)
     }
 

@@ -50,6 +50,9 @@
 		B679800E1AF2C7F100516697 /* eat.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B679800D1AF2C7F100516697 /* eat.mp3 */; };
 		B67980101AF2C91600516697 /* speech.png in Resources */ = {isa = PBXBuildFile; fileRef = B679800F1AF2C91600516697 /* speech.png */; };
 		B67980121AF2DEE700516697 /* graph.png in Resources */ = {isa = PBXBuildFile; fileRef = B67980111AF2DEE700516697 /* graph.png */; };
+		B6D9F4901AFFB3FF0058B643 /* PeripheralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D9F48F1AFFB3FF0058B643 /* PeripheralViewController.swift */; };
+		B6D9F4921AFFB41D0058B643 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6D9F4911AFFB41D0058B643 /* CoreBluetooth.framework */; };
+		B6D9F4941AFFB9860058B643 /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D9F4931AFFB9860058B643 /* SplitViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +118,9 @@
 		B679800D1AF2C7F100516697 /* eat.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = eat.mp3; sourceTree = "<group>"; };
 		B679800F1AF2C91600516697 /* speech.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = speech.png; path = Images.xcassets/speech.png; sourceTree = "<group>"; };
 		B67980111AF2DEE700516697 /* graph.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = graph.png; path = Images.xcassets/graph.png; sourceTree = "<group>"; };
+		B6D9F48F1AFFB3FF0058B643 /* PeripheralViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeripheralViewController.swift; sourceTree = "<group>"; };
+		B6D9F4911AFFB41D0058B643 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		B6D9F4931AFFB9860058B643 /* SplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +128,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6D9F4921AFFB41D0058B643 /* CoreBluetooth.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,11 +145,13 @@
 		B66325D81AF6CD79006F313A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B6D9F48F1AFFB3FF0058B643 /* PeripheralViewController.swift */,
 				B6797FB11AF29DF700516697 /* AppDelegate.swift */,
 				B6797FD91AF2A4D200516697 /* FoodLibraryTableViewController.swift */,
 				B67980011AF2BD6600516697 /* YodaViewController.swift */,
 				B66325D61AF6CD61006F313A /* VitalsViewController.swift */,
 				B61B18F41AFBD88300E2C72B /* DetailViewController.swift */,
+				B6D9F4931AFFB9860058B643 /* SplitViewController.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -167,6 +176,7 @@
 		B6797FA31AF29DF700516697 = {
 			isa = PBXGroup;
 			children = (
+				B6D9F4911AFFB41D0058B643 /* CoreBluetooth.framework */,
 				B6797FAE1AF29DF700516697 /* Yoda Demo */,
 				B6797FC71AF29DF700516697 /* Yoda DemoTests */,
 				B6797FAD1AF29DF700516697 /* Products */,
@@ -411,8 +421,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B66325E81AF6D51A006F313A /* BEMSimpleLineGraphView.m in Sources */,
+				B6D9F4941AFFB9860058B643 /* SplitViewController.swift in Sources */,
 				B6797FD61AF29F9900516697 /* food.swift in Sources */,
 				B66325E41AF6D51A006F313A /* BEMAverageLine.m in Sources */,
+				B6D9F4901AFFB3FF0058B643 /* PeripheralViewController.swift in Sources */,
 				B61B18F51AFBD88300E2C72B /* DetailViewController.swift in Sources */,
 				B67980021AF2BD6600516697 /* YodaViewController.swift in Sources */,
 				B66325E71AF6D51A006F313A /* BEMPermanentPopupView.m in Sources */,
