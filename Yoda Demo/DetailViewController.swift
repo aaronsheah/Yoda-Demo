@@ -9,6 +9,8 @@
 import UIKit
 import CoreBluetooth
 
+var splitViewController: SplitViewController! = nil
+
 class DetailViewController: UIViewController, BEMSimpleLineGraphDelegate{
     
     var peripheralManager:CBPeripheralManager!
@@ -26,42 +28,82 @@ class DetailViewController: UIViewController, BEMSimpleLineGraphDelegate{
         }
     }
     
-    var food:Food = foodLibrary[0]
+    var meal:Meal = mealLibrary[0] as Meal
+    var chosenIndex = 0
     
-    @IBOutlet weak var variantsButton: UISegmentedControl!
     @IBOutlet weak var foodImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
 
     @IBOutlet weak var feedYodaButton: UIButton!
     @IBAction func feedYodaAction(sender: AnyObject) {
-        sendData("\(food.id)")
+        sendData("\((meal.foods[chosenIndex] as! Food).id)")
     }
 
     @IBOutlet weak var descLabel: UILabel!
-
-    
     @IBOutlet weak var glucoseProfile: BEMSimpleLineGraphView!
+    
+    var customSC:UISegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = food.name
-        nameLabel.text = food.name
-        foodImage.image = food.thumbnail
-        descLabel.text = food.description
+        self.title = meal.name
+        nameLabel.text = meal.name
+        foodImage.image = meal.thumbnail
+        descLabel.text = (meal.foods[chosenIndex] as! Food).description
+        
+        if meal.foods.count != 1 {
+            self.title = "\(meal.name) (\((meal.foods[chosenIndex] as! Food).name))"
+            
+            var names:NSMutableArray = []
+
+            for temp in meal.foods {
+                var food = temp as! Food
+                names.addObject(food.name)
+            }
+            
+            // Initialize
+            customSC = UISegmentedControl(items: names as [AnyObject])
+            customSC.selectedSegmentIndex = chosenIndex
+            
+            // Set up Frame and SegmentedControl
+            let frame = UIScreen.mainScreen().bounds
+            var width:CGFloat = 60 * CGFloat(names.count)
+            customSC.frame = CGRectMake(10, 75, width, 28)
+            // Style the Segmented Control
+            customSC.layer.cornerRadius = 5.0  // Don't let background bleed
+            customSC.backgroundColor = UIColor.whiteColor()
+            customSC.tintColor = UIColor.blueColor()
+            
+            // Add target action method
+            customSC.addTarget(self, action: "reloadPage", forControlEvents: .ValueChanged)
+            
+            // Add this custom Segmented Control to our view
+            self.view.addSubview(customSC)
+        }
         
         // Do any additional setup after loading the view.
-        
         setupGraph()
         
         feedYodaButton.layer.cornerRadius = 5
     }
 
+    func reloadPage() {
+        chosenIndex = customSC.selectedSegmentIndex
+        
+        self.viewDidLoad()
+        self.viewWillAppear(true)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        glucoseProfile.reloadGraph()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     func setupGraph() {
         glucoseProfile.animationGraphEntranceTime = 1.5
         
@@ -82,10 +124,12 @@ class DetailViewController: UIViewController, BEMSimpleLineGraphDelegate{
     */
 
     func numberOfPointsInLineGraph(graph: BEMSimpleLineGraphView) -> Int {
+        let food:Food = meal.foods[chosenIndex] as! Food
         return food.glucoseProfile.count
     }
     
     func lineGraph(graph: BEMSimpleLineGraphView, valueForPointAtIndex index: Int) -> CGFloat {
+        let food:Food = meal.foods[chosenIndex] as! Food
         return CGFloat(food.glucoseProfile.objectAtIndex(index) as! NSNumber)
     }
     
@@ -101,7 +145,7 @@ class DetailViewController: UIViewController, BEMSimpleLineGraphDelegate{
             
             var alertView:UIAlertController!
             if sendUrl! {
-                alertView = UIAlertController(title: "Yoda Fed!", message: "Yoda just ate \(food.name) via WiFi", preferredStyle: .Alert)
+                alertView = UIAlertController(title: "Yoda Fed!", message: "Yoda just ate \(meal.name) via WiFi", preferredStyle: .Alert)
                 
             }
             else {
@@ -123,10 +167,10 @@ class DetailViewController: UIViewController, BEMSimpleLineGraphDelegate{
             
             var alertView:UIAlertController!
             if sendUrl! {
-                alertView = UIAlertController(title: "Yoda Fed!", message: "Yoda just ate \(food.name) via WiFi & Bluetooth", preferredStyle: .Alert)
+                alertView = UIAlertController(title: "Yoda Fed!", message: "Yoda just ate \(meal.name) via WiFi & Bluetooth", preferredStyle: .Alert)
             }
             else {
-                alertView = UIAlertController(title: "Yoda Fed!", message: "Yoda just ate \(food.name) via Bluetooth", preferredStyle: .Alert)
+                alertView = UIAlertController(title: "Yoda Fed!", message: "Yoda just ate \(meal.name) via Bluetooth", preferredStyle: .Alert)
             }
             alertView.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
             presentViewController(alertView, animated: true, completion: nil)

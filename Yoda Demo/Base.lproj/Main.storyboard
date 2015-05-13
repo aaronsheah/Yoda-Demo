@@ -223,14 +223,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="hmL-7n-WtM">
-                                <rect key="frame" x="290" y="351" width="123" height="29"/>
-                                <segments>
-                                    <segment title="First"/>
-                                    <segment title="Second"/>
-                                </segments>
-                            </segmentedControl>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="UY4-iM-jel">
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UY4-iM-jel">
                                 <rect key="frame" x="383" y="689" width="51" height="31"/>
                                 <connections>
                                     <action selector="sendUrlSwitchAction:" destination="lEC-pd-UiV" eventType="valueChanged" id="Q3D-YT-IJQ"/>
@@ -274,7 +267,6 @@
                         <outlet property="glucoseProfile" destination="vqD-uv-BzL" id="aCJ-1D-nkg"/>
                         <outlet property="nameLabel" destination="mZN-46-ss5" id="W1d-fQ-swL"/>
                         <outlet property="sendUrlSwitch" destination="UY4-iM-jel" id="6CU-Vt-1um"/>
-                        <outlet property="variantsButton" destination="hmL-7n-WtM" id="V0K-0P-HKe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oii-rE-k7W" userLabel="First Responder" sceneMemberID="firstResponder"/>

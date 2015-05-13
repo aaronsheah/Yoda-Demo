@@ -6,9 +6,7 @@ var detailViewController: DetailViewController? = nil
 
 class foodCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var idLabel: UILabel!
     @IBOutlet weak var thumbnail: UIImageView!
-    @IBOutlet weak var caloriesLabel: UILabel!
     
     var eatingSounds = [
         NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("eat", ofType: "mp3")!)
@@ -125,16 +123,16 @@ class FoodLibraryTableViewController: UITableViewController, UITableViewDelegate
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return foodLibrary.count
+        return mealLibrary.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("foodCell", forIndexPath: indexPath) as! foodCell
 
-        let food = foodLibrary[indexPath.row]
+        let meal = mealLibrary[indexPath.row]
         
-        cell.nameLabel.text = food.name
-        cell.thumbnail.image = food.thumbnail
+        cell.nameLabel.text = meal.name
+        cell.thumbnail.image = meal.thumbnail
 
         return cell
     }
@@ -148,13 +146,13 @@ class FoodLibraryTableViewController: UITableViewController, UITableViewDelegate
         //    self.detailViewController!.detailItem = pizza //send the model to the detailItem
         //}
         if detailViewController != nil {
-            detailViewController!.food = foodLibrary[indexPath.row]
+            detailViewController!.meal = mealLibrary[indexPath.row] as Meal!
             detailViewController!.peripheralManager = peripheralManager
             detailViewController!.transferCharacteristic = transferCharacteristic
             detailViewController!.readyToSend = readyToSend
         }
 
-        println(indexPath.row)
+        println(mealLibrary[indexPath.row].foods[0].name)
     }
 
     /*
@@ -203,8 +201,8 @@ class FoodLibraryTableViewController: UITableViewController, UITableViewDelegate
             let indexPath = self.tableView.indexPathForSelectedRow()
             //    let object = objects[indexPath.row] as NSDate
             //((segue.destinationViewController as UINavigationController).topViewController as DetailViewController).detailItem = object
-            let food = foodLibrary[indexPath!.row] //set to the selected pizza
-            ((segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController).food = food
+            let meal = mealLibrary[indexPath!.row] as Meal //set to the selected pizza
+            ((segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController).meal = meal
             ((segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController).peripheralManager = peripheralManager
             ((segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController).transferCharacteristic = transferCharacteristic
             ((segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController).readyToSend = readyToSend
