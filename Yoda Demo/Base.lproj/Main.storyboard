@@ -9,7 +9,7 @@
         <!--Food Library Table-->
         <scene sceneID="SG9-NT-J46">
             <objects>
-                <tableViewController title="Food Library Table" clearsSelectionOnViewWillAppear="NO" id="Ero-NN-7nt" customClass="FoodLibraryTableViewController" customModule="Yoda_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="foodLibraryViewController" title="Food Library Table" clearsSelectionOnViewWillAppear="NO" id="Ero-NN-7nt" customClass="FoodLibraryTableViewController" customModule="Yoda_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="101" sectionHeaderHeight="22" sectionFooterHeight="22" id="CTA-sY-jIM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -143,7 +143,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="703" height="300"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vqD-uv-BzL" customClass="BEMSimpleLineGraphView">
-                                <rect key="frame" x="347" y="364" width="340" height="219"/>
+                                <rect key="frame" x="347" y="387" width="340" height="219"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="enableXAxisLabel" value="YES"/>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="enableYAxisLabel" value="YES"/>
@@ -200,7 +200,7 @@
                                 <size key="shadowOffset" width="5" height="5"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3b3-Uc-tdp">
-                                <rect key="frame" x="244" y="610" width="214" height="44"/>
+                                <rect key="frame" x="244" y="622" width="214" height="44"/>
                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="214" id="4BY-yX-fZf"/>
@@ -215,7 +215,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9gj-kt-QO4">
-                                <rect key="frame" x="16" y="364" width="323" height="219"/>
+                                <rect key="frame" x="16" y="387" width="323" height="219"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="323" id="9h0-0C-rHm"/>
                                 </constraints>
@@ -223,23 +223,46 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="hmL-7n-WtM">
+                                <rect key="frame" x="290" y="351" width="123" height="29"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                            </segmentedControl>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="UY4-iM-jel">
+                                <rect key="frame" x="383" y="689" width="51" height="31"/>
+                                <connections>
+                                    <action selector="sendUrlSwitchAction:" destination="lEC-pd-UiV" eventType="valueChanged" id="Q3D-YT-IJQ"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send via URL" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ln-xR-DEW">
+                                <rect key="frame" x="270" y="694" width="105" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="UY4-iM-jel" firstAttribute="leading" secondItem="9Ln-xR-DEW" secondAttribute="trailing" constant="8" symbolic="YES" id="6Kd-gf-RdK"/>
                             <constraint firstItem="vqD-uv-BzL" firstAttribute="leading" secondItem="9gj-kt-QO4" secondAttribute="trailing" constant="8" symbolic="YES" id="9t5-dl-kft"/>
-                            <constraint firstItem="9gj-kt-QO4" firstAttribute="top" secondItem="mZN-46-ss5" secondAttribute="bottom" constant="21" id="GXk-dE-nYK"/>
+                            <constraint firstItem="9gj-kt-QO4" firstAttribute="top" secondItem="mZN-46-ss5" secondAttribute="bottom" constant="44" id="GXk-dE-nYK"/>
                             <constraint firstItem="mZN-46-ss5" firstAttribute="centerX" secondItem="3b3-Uc-tdp" secondAttribute="centerX" id="GnJ-RW-Ndn"/>
                             <constraint firstItem="9gj-kt-QO4" firstAttribute="leading" secondItem="pb3-jO-YTb" secondAttribute="leadingMargin" id="Nbe-9h-4mg"/>
                             <constraint firstAttribute="trailing" secondItem="Btz-vH-Lg2" secondAttribute="trailing" id="QOP-dU-tSQ"/>
-                            <constraint firstItem="3b3-Uc-tdp" firstAttribute="top" secondItem="vqD-uv-BzL" secondAttribute="bottom" constant="27" id="RgO-DA-yGH"/>
+                            <constraint firstItem="3b3-Uc-tdp" firstAttribute="top" secondItem="vqD-uv-BzL" secondAttribute="bottom" constant="16" id="RgO-DA-yGH"/>
                             <constraint firstItem="Btz-vH-Lg2" firstAttribute="top" secondItem="pb3-jO-YTb" secondAttribute="top" id="SRd-iq-7OX"/>
                             <constraint firstItem="Btz-vH-Lg2" firstAttribute="centerX" secondItem="mZN-46-ss5" secondAttribute="centerX" id="Sxt-Fr-0b7"/>
                             <constraint firstItem="vqD-uv-BzL" firstAttribute="trailing" secondItem="pb3-jO-YTb" secondAttribute="trailingMargin" id="WbN-lW-HxH"/>
-                            <constraint firstItem="IaL-FU-AbB" firstAttribute="top" secondItem="3b3-Uc-tdp" secondAttribute="bottom" constant="114" id="Xcz-ic-GYE"/>
-                            <constraint firstItem="9gj-kt-QO4" firstAttribute="top" secondItem="Btz-vH-Lg2" secondAttribute="bottom" constant="64" id="a3i-6T-wJg"/>
+                            <constraint firstItem="IaL-FU-AbB" firstAttribute="top" secondItem="3b3-Uc-tdp" secondAttribute="bottom" constant="102" id="Xcz-ic-GYE"/>
+                            <constraint firstItem="UY4-iM-jel" firstAttribute="top" secondItem="3b3-Uc-tdp" secondAttribute="bottom" constant="23" id="ZiY-RU-TQA"/>
+                            <constraint firstItem="9gj-kt-QO4" firstAttribute="top" secondItem="Btz-vH-Lg2" secondAttribute="bottom" constant="87" id="a3i-6T-wJg"/>
                             <constraint firstItem="vqD-uv-BzL" firstAttribute="bottom" secondItem="9gj-kt-QO4" secondAttribute="bottom" id="al8-5Q-YuD"/>
+                            <constraint firstItem="9Ln-xR-DEW" firstAttribute="centerY" secondItem="UY4-iM-jel" secondAttribute="centerY" id="cKT-5Q-GBT"/>
                             <constraint firstItem="mZN-46-ss5" firstAttribute="top" secondItem="p6k-Mj-42I" secondAttribute="bottom" constant="184" id="eaP-G8-4jM"/>
                             <constraint firstItem="Btz-vH-Lg2" firstAttribute="leading" secondItem="pb3-jO-YTb" secondAttribute="leading" id="goS-7J-cNS"/>
+                            <constraint firstItem="9Ln-xR-DEW" firstAttribute="leading" secondItem="pb3-jO-YTb" secondAttribute="leading" constant="270" id="wMf-DC-wXa"/>
                             <constraint firstItem="9gj-kt-QO4" firstAttribute="top" secondItem="vqD-uv-BzL" secondAttribute="top" id="wku-wd-k6x"/>
                         </constraints>
                     </view>
@@ -250,6 +273,8 @@
                         <outlet property="foodImage" destination="Btz-vH-Lg2" id="fMi-sz-osr"/>
                         <outlet property="glucoseProfile" destination="vqD-uv-BzL" id="aCJ-1D-nkg"/>
                         <outlet property="nameLabel" destination="mZN-46-ss5" id="W1d-fQ-swL"/>
+                        <outlet property="sendUrlSwitch" destination="UY4-iM-jel" id="6CU-Vt-1um"/>
+                        <outlet property="variantsButton" destination="hmL-7n-WtM" id="V0K-0P-HKe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oii-rE-k7W" userLabel="First Responder" sceneMemberID="firstResponder"/>

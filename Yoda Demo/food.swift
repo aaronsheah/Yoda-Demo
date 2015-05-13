@@ -56,22 +56,137 @@ let iceCream:Food = Food(name: "Ice Cream", id: 9, thumbnail: UIImage(named: "ic
 //    iceCream
 //]
 
-let bacon_and_eggs = Food(name: "Bacon & Eggs", description: "Scrambled eggs, Canadian bacon and gelatin (Jell-O)", id: 1, thumbnail: "bacon-and-eggs.jpg", glucoseProfile:[])
-let cheese_sandwich = Food(name: "Cheese Sandiwch", description: "White bread, low-fat cheese, sucrose, oil, butter", id: 2, thumbnail: "cheese-sandwich.jpg", glucoseProfile: [])
-let full_breakfast = Food(name: "Full Breakfast", description: "Fat milk, white rice, low-fat cheese, fructose, pear, bran-cookies, oil", id: 3, thumbnail: "cereal.jpg", glucoseProfile: [])
-let pasta_low = Food(name: "Pasta", description: "Pasta, Oil (Low Fat)", id: 4, thumbnail: "pasta.jpg", glucoseProfile: [])
-let pasta_medium = Food(name: "Pasta", description: "Pasta, Oil (Medium Fat)", id: 5, thumbnail: "pasta.jpg", glucoseProfile: [])
-let pasta_high = Food(name: "Pasta", description: "Pasta, Oil (High Fat)", id: 6, thumbnail: "pasta.jpg", glucoseProfile: [])
-let rice_pudding = Food(name: "Rice Pudding", description: "Rice, pudding, sugar and cinnamon", id: 7, thumbnail: "rice-pudding.jpg", glucoseProfile: [])
-let french_toast = Food(name: "French Toast", description: "Toast, honey, ham, curd cheese, orange joice", id: 8, thumbnail: "french-toast.jpg", glucoseProfile: [])
-let barley = Food(name: "Barley", description: "Pear barley", id: 9, thumbnail: "barley.jpg", glucoseProfile: [])
-let mashed_potato = Food(name: "Mashed Potato", description: "Instant Mashed Potato", id: 10, thumbnail: "mashed-potato.jpg", glucoseProfile: [])
-let eggs_and_toast = Food(name: "Eggs & Toast", description: "2 slices of bread, 1 and ½ eggs, 1 tea spoon of margarine and orange juice", id: 11, thumbnail: "eggs-and-toast.jpg", glucoseProfile: [])
-let whipped_cream_cereal = Food(name: "Whipped Cream Cereal", description: "Cereal, coconut, chocolate, fruit and whipping cream", id: 12, thumbnail: "whipped-cream-cereal.jpg", glucoseProfile: [])
-let oats1 = Food(name: "Oats1", description: "Oats, coconut, almonds, raisins, honey, sunflower oil, banana, double cream and milk", id: 13, thumbnail: "oats.jpeg", glucoseProfile: [])
-let oats2 = Food(name: "Oats2", description: "Oats, coconut, almonds, raisins, honey, sunflower oil, banana, double cream and milk", id: 14, thumbnail: "oats.jpeg", glucoseProfile: [])
-let oats3 = Food(name: "Oats3", description: "Oats, coconut, almonds, raisins, honey, sunflower oil, banana, double cream and milk", id: 15, thumbnail: "oats.jpeg", glucoseProfile: [])
-let breakfast = Food(name: "Breakfast", description: "Oat loop cereal, milk, white bread, margarine, strawberry jam, orange juice", id: 16, thumbnail: "breakfast.jpg", glucoseProfile: [])
+let bacon_and_eggs = Food(
+    name: "Bacon & Eggs",
+    description: "Scrambled eggs, Canadian bacon and gelatin (Jell-O)",
+    id: 1,
+    thumbnail: "bacon-and-eggs.jpg",
+    glucoseProfile:[
+        0,8,6,5,4,3,2,1.5,1,0.8,0.5,0.4,0.3,0.4,0.3,0.2,0.1,0
+    ]
+)
+
+let cheese_sandwich = Food(
+    name: "Cheese Sandiwch",
+    description: "White bread, low-fat cheese, sucrose, oil, butter",
+    id: 2,
+    thumbnail: "cheese-sandwich.jpg",
+    glucoseProfile: [
+        0,3.5,6,7,6.5,6,5,4,3,2,1.5,1,0.5
+    ]
+)
+
+let full_breakfast = Food(
+    name: "Full Breakfast", 
+    description: "Fat milk, white rice, low-fat cheese, fructose, pear, bran-cookies, oil", 
+    id: 3, 
+    thumbnail: "cereal.jpg", 
+    glucoseProfile: []
+)
+
+let pasta_low = Food(
+    name: "Pasta", 
+    description: "Pasta, Oil (Low Fat)", 
+    id: 4, 
+    thumbnail: "pasta.jpg", 
+    glucoseProfile: []
+)
+
+let pasta_medium = Food(
+    name: "Pasta", 
+    description: "Pasta, Oil (Medium Fat)", 
+    id: 5, 
+    thumbnail: "pasta.jpg", 
+    glucoseProfile: []
+)
+
+let pasta_high = Food(
+    name: "Pasta", 
+    description: "Pasta, Oil (High Fat)", 
+    id: 6, 
+    thumbnail: "pasta.jpg", 
+    glucoseProfile: []
+)
+
+let rice_pudding = Food(
+    name: "Rice Pudding", 
+    description: "Rice, pudding, sugar and cinnamon", 
+    id: 7, 
+    thumbnail: "rice-pudding.jpg", 
+    glucoseProfile: []
+)
+
+let french_toast = Food(
+    name: "French Toast", 
+    description: "Toast, honey, ham, curd cheese, orange joice", 
+    id: 8, 
+    thumbnail: "french-toast.jpg", 
+    glucoseProfile: []
+)
+
+let barley = Food(
+    name: "Barley", 
+    description: "Pear barley", 
+    id: 9, 
+    thumbnail: "barley.jpg", 
+    glucoseProfile: []
+)
+
+let mashed_potato = Food(
+    name: "Mashed Potato", 
+    description: "Instant Mashed Potato", 
+    id: 10,
+     thumbnail: "mashed-potato.jpg", 
+     glucoseProfile: []
+    )
+
+let eggs_and_toast = Food(
+    name: "Eggs & Toast", 
+    description: "2 slices of bread, 1 and ½ eggs, 1 tea spoon of margarine and orange juice", 
+    id: 11,
+     thumbnail: "eggs-and-toast.jpg", 
+     glucoseProfile: []
+    )
+
+let whipped_cream_cereal = Food(
+    name: "Whipped Cream Cereal", 
+    description: "Cereal, coconut, chocolate, fruit and whipping cream", 
+    id: 12,
+     thumbnail: "whipped-cream-cereal.jpg", 
+     glucoseProfile: []
+    )
+
+let oats1 = Food(
+    name: "Oats1", 
+    description: "Oats, coconut, almonds, raisins, honey, sunflower oil, banana, double cream and milk", 
+    id: 13,
+     thumbnail: "oats.jpeg", 
+     glucoseProfile: []
+    )
+
+let oats2 = Food(
+    name: "Oats2", 
+    description: "Oats, coconut, almonds, raisins, honey, sunflower oil, banana, double cream and milk", 
+    id: 14,
+     thumbnail: "oats.jpeg", 
+     glucoseProfile: []
+    )
+
+let oats3 = Food(
+    name: "Oats3", 
+    description: "Oats, coconut, almonds, raisins, honey, sunflower oil, banana, double cream and milk", 
+    id: 15,
+     thumbnail: "oats.jpeg", 
+     glucoseProfile: []
+    )
+
+let breakfast = Food(
+    name: "Breakfast", 
+    description: "Oat loop cereal, milk, white bread, margarine, strawberry jam, orange juice", 
+    id: 16,
+     thumbnail: "breakfast.jpg", 
+     glucoseProfile: []
+    )
 
 let foodLibrary = [
     bacon_and_eggs,

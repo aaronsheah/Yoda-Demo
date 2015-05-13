@@ -114,23 +114,6 @@ class FoodLibraryTableViewController: UITableViewController, UITableViewDelegate
         return
     }
     
-    func sendData(data:String) {
-        if(!readyToSend) {
-            println("Not Ready to Send : \(data)")
-            return
-        }
-        
-        var didSend:Bool = true
-        
-        let chunk = (data as NSString).dataUsingEncoding(NSUTF8StringEncoding)
-        
-        didSend = peripheralManager.updateValue(chunk, forCharacteristic: transferCharacteristic, onSubscribedCentrals: nil)
-        
-        if(didSend) {
-            println("Sent : \(data)")
-        }
-    }
-    
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -166,8 +149,11 @@ class FoodLibraryTableViewController: UITableViewController, UITableViewDelegate
         //}
         if detailViewController != nil {
             detailViewController!.food = foodLibrary[indexPath.row]
+            detailViewController!.peripheralManager = peripheralManager
+            detailViewController!.transferCharacteristic = transferCharacteristic
+            detailViewController!.readyToSend = readyToSend
         }
-        sendData(String(indexPath.row + 1))
+
         println(indexPath.row)
     }
 
@@ -219,6 +205,9 @@ class FoodLibraryTableViewController: UITableViewController, UITableViewDelegate
             //((segue.destinationViewController as UINavigationController).topViewController as DetailViewController).detailItem = object
             let food = foodLibrary[indexPath!.row] //set to the selected pizza
             ((segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController).food = food
+            ((segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController).peripheralManager = peripheralManager
+            ((segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController).transferCharacteristic = transferCharacteristic
+            ((segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController).readyToSend = readyToSend
         }
     }
 
