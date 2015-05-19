@@ -53,6 +53,7 @@
 		B6D9F4901AFFB3FF0058B643 /* PeripheralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D9F48F1AFFB3FF0058B643 /* PeripheralViewController.swift */; };
 		B6D9F4921AFFB41D0058B643 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6D9F4911AFFB41D0058B643 /* CoreBluetooth.framework */; };
 		B6D9F4941AFFB9860058B643 /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D9F4931AFFB9860058B643 /* SplitViewController.swift */; };
+		B6E54E231B063B32004854AA /* InfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E54E221B063B32004854AA /* InfoTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +122,7 @@
 		B6D9F48F1AFFB3FF0058B643 /* PeripheralViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeripheralViewController.swift; sourceTree = "<group>"; };
 		B6D9F4911AFFB41D0058B643 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		B6D9F4931AFFB9860058B643 /* SplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
+		B6E54E221B063B32004854AA /* InfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +154,7 @@
 				B66325D61AF6CD61006F313A /* VitalsViewController.swift */,
 				B61B18F41AFBD88300E2C72B /* DetailViewController.swift */,
 				B6D9F4931AFFB9860058B643 /* SplitViewController.swift */,
+				B6E54E221B063B32004854AA /* InfoTableViewController.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -426,6 +429,7 @@
 				B66325E41AF6D51A006F313A /* BEMAverageLine.m in Sources */,
 				B6D9F4901AFFB3FF0058B643 /* PeripheralViewController.swift in Sources */,
 				B61B18F51AFBD88300E2C72B /* DetailViewController.swift in Sources */,
+				B6E54E231B063B32004854AA /* InfoTableViewController.swift in Sources */,
 				B67980021AF2BD6600516697 /* YodaViewController.swift in Sources */,
 				B66325E71AF6D51A006F313A /* BEMPermanentPopupView.m in Sources */,
 				B6797FB21AF29DF700516697 /* AppDelegate.swift in Sources */,

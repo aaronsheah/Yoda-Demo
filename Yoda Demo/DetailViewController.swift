@@ -17,7 +17,7 @@ class DetailViewController: UIViewController, BEMSimpleLineGraphDelegate{
     var transferCharacteristic:CBMutableCharacteristic!
     var readyToSend:Bool! = false
     
-    var sendUrl:Bool! = false
+    var sendUrl:Bool! = true
     @IBOutlet weak var sendUrlSwitch: UISwitch!
     @IBAction func sendUrlSwitchAction(sender: AnyObject) {
         if sendUrlSwitch.on {
@@ -38,6 +38,13 @@ class DetailViewController: UIViewController, BEMSimpleLineGraphDelegate{
     @IBAction func feedYodaAction(sender: AnyObject) {
         sendData("\((meal.foods[chosenIndex] as! Food).id)")
     }
+    @IBAction func resetYoda(sender: AnyObject) {
+        if sendUrl! {
+            let url = NSURL(string: "http://ic-yoda.appspot.com/id?reset=1")
+            let request = NSURLRequest(URL: url!)
+            let connection = NSURLConnection(request: request, delegate:nil, startImmediately: true)
+        }
+    }
 
     @IBOutlet weak var descLabel: UILabel!
     @IBOutlet weak var glucoseProfile: BEMSimpleLineGraphView!
@@ -50,7 +57,6 @@ class DetailViewController: UIViewController, BEMSimpleLineGraphDelegate{
         self.title = meal.name
         nameLabel.text = meal.name
         foodImage.image = meal.thumbnail
-        descLabel.text = (meal.foods[chosenIndex] as! Food).description
         
         if meal.foods.count != 1 {
             self.title = "\(meal.name) (\((meal.foods[chosenIndex] as! Food).name))"
@@ -70,6 +76,7 @@ class DetailViewController: UIViewController, BEMSimpleLineGraphDelegate{
             let frame = UIScreen.mainScreen().bounds
             var width:CGFloat = 60 * CGFloat(names.count)
             customSC.frame = CGRectMake(10, 75, width, 28)
+            
             // Style the Segmented Control
             customSC.layer.cornerRadius = 5.0  // Don't let background bleed
             customSC.backgroundColor = UIColor.whiteColor()
@@ -106,23 +113,29 @@ class DetailViewController: UIViewController, BEMSimpleLineGraphDelegate{
 
     func setupGraph() {
         glucoseProfile.animationGraphEntranceTime = 1.5
+        glucoseProfile.enableReferenceAxisFrame = true
         
-        glucoseProfile.layer.borderColor = UIColor.blackColor().CGColor
-        glucoseProfile.layer.cornerRadius = 5
-        glucoseProfile.layer.borderWidth = 1
+//        glucoseProfile.layer.borderColor = UIColor.blackColor().CGColor
+//        glucoseProfile.layer.cornerRadius = 5
+//        glucoseProfile.layer.borderWidth = 1
+        
+        glucoseProfile.enableBezierCurve = false
         
     }
     
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "infoSegue" {
+            (segue.destinationViewController as! InfoTableViewController).food = meal.foods[chosenIndex] as! Food
+        }
     }
-    */
 
+    // MARK: Graph
     func numberOfPointsInLineGraph(graph: BEMSimpleLineGraphView) -> Int {
         let food:Food = meal.foods[chosenIndex] as! Food
         return food.glucoseProfile.count
@@ -133,9 +146,18 @@ class DetailViewController: UIViewController, BEMSimpleLineGraphDelegate{
         return CGFloat(food.glucoseProfile.objectAtIndex(index) as! NSNumber)
     }
     
+    func lineGraph(graph: BEMSimpleLineGraphView, labelOnXAxisForIndex index: Int) -> String {
+        let food:Food = meal.foods[chosenIndex] as! Food
+        return "\(food.glucoseTime.objectAtIndex(index) as! NSNumber)"
+    }
+    
+    func numberOfGapsBetweenLabelsOnLineGraph(graph: BEMSimpleLineGraphView) -> Int {
+        return 11
+    }
+    
     func sendData(data:String) {
         if sendUrl! {
-            let url = NSURL(string: "http://ic-yoda.appspot.com/id?id=\(data)")
+            let url = NSURL(string: "http://ic-yoda.appspot.com/id?id=\(data)&size=\(mealSize)")
             let request = NSURLRequest(URL: url!)
             let connection = NSURLConnection(request: request, delegate:nil, startImmediately: true)
         }

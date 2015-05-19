@@ -11,12 +11,13 @@ import Foundation
 
 var glucoseLevel:Double = -1
 var insulinLevel:Double = -1
-// , BEMSimpleLineGraphDataSource, BEMSimpleLineGraphDelegate
+
 class VitalsViewController: UIViewController, BEMSimpleLineGraphDelegate{
     @IBOutlet weak var insulinLabel: UILabel!
     @IBOutlet weak var glucoseLabel: UILabel!
 
     @IBOutlet weak var myGraph: BEMSimpleLineGraphView!
+
     var timer = NSTimer()
     
     var glucoseLevels:NSMutableArray = []
@@ -26,21 +27,111 @@ class VitalsViewController: UIViewController, BEMSimpleLineGraphDelegate{
     var previousStepperValue:Int = 0
     var totalNumber:Int = 0
     
+    @IBAction func refreshGraph(sender: AnyObject) {
+        var api = "https://ic-yoda.appspot.com/_ah/api/icYodaApi/v1/glucInsuValues"
+        var request = NSMutableURLRequest(URL: NSURL(string: api)!)
+        
+        var session = NSURLSession.sharedSession()
+        
+        request.HTTPMethod = "POST"
+        
+        var params = [String:String]()
+        params["n"] = "20"
+        var err: NSError?
+        request.HTTPBody = NSJSONSerialization.dataWithJSONObject(params, options: nil, error: &err)
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        var task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
+            //            println("Response: \(response)")
+            var strData = NSString(data: data, encoding: NSUTF8StringEncoding)
+//            println("Body: \(strData)")
+            var err: NSError?
+            if data == nil {
+                return
+            }
+            var json = NSJSONSerialization.JSONObjectWithData(data!, options: .MutableLeaves, error: &err) as? NSDictionary
+            
+            // Did the JSONObjectWithData constructor return an error? If so, log the error to the console
+            if(err != nil) {
+                println(err!.localizedDescription)
+                let jsonStr = NSString(data: data!, encoding: NSUTF8StringEncoding)
+                println("Error could not parse JSON: '\(jsonStr)'")
+            }
+            else {
+                // The JSONObjectWithData constructor didn't return an error. But, we should still
+                // check and make sure that json has a value using optional binding.
+                if let parseJSON = json {
+                    // Okay, the parsedJSON is here, let's get the value for 'success' out of it
+                    var items = parseJSON["items"] as! NSArray
+                    println("Items: \(items)")
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.drawGraph(items)
+                    }
+                    
+                    let item = items[0] as! NSDictionary
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.refreshLabel(item)
+                    }
+                }
+                else {
+                    // Woa, okay the json object was nil, something went worng. Maybe the server isn't running?
+                    let jsonStr = NSString(data: data, encoding: NSUTF8StringEncoding)
+                    println("Error could not parse JSON: \(jsonStr)")
+                }
+            }
+        })
+        
+        task.resume()
+    }
+    
+    func refreshLabel(item:NSDictionary) {
+        let gluc = item["gluc"] as! String
+        let insu = item["insu"] as! String
+        
+        self.glucoseLabel.text = "\(gluc)"
+        self.insulinLabel.text = "\(insu)"
+        
+    }
+    
+    func drawGraph(items:NSArray) {
+        glucoseLevels.removeAllObjects()
+        insulinLevels.removeAllObjects()
+        time.removeAllObjects()
+        
+        var counter = 0
+        
+        for item in items {
+            let gluc = (item["gluc"] as! NSString).floatValue
+            let insu = (item["insu"] as! NSString).floatValue
+            
+            glucoseLevels.insertObject(gluc, atIndex: 0)
+            insulinLevels.insertObject(insu, atIndex: 0)
+            time.addObject((counter++)*5)
+        }
+
+        myGraph.reloadGraph()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupGraph()
-        hydrateValues()
+//        hydrateValues()
         
-        timer = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: Selector("generateLevels"), userInfo: nil, repeats: true)
+        timer = NSTimer.scheduledTimerWithTimeInterval(2, target:self, selector: Selector("refreshGraph:"), userInfo: nil, repeats: true)
     }
-    
+
     func numberOfPointsInLineGraph(graph: BEMSimpleLineGraphView) -> Int {
         return glucoseLevels.count
     }
     
     func lineGraph(graph: BEMSimpleLineGraphView, valueForPointAtIndex index: Int) -> CGFloat {
         return CGFloat(glucoseLevels.objectAtIndex(index) as! NSNumber)
+    }
+    
+    func lineGraph(graph: BEMSimpleLineGraphView, labelOnXAxisForIndex index: Int) -> String {
+        return "\(time[index])"
     }
     
     
@@ -50,38 +141,13 @@ class VitalsViewController: UIViewController, BEMSimpleLineGraphDelegate{
     }
     
     func setupGraph() {
-        myGraph.animationGraphEntranceTime = 0
-    }
+        myGraph.enableYAxisLabel = true
+        myGraph.autoScaleYAxis = true
+        myGraph.enableReferenceYAxisLines = true
+        myGraph.enableReferenceXAxisLines = true
+        myGraph.enableReferenceAxisFrame = true
+        myGraph.enableXAxisLabel = true
+        myGraph.animationGraphEntranceTime = 0.5
     
-    func generateLevels() {
-        glucoseLevels.removeObjectAtIndex(0)
-        
-        glucoseLevel = cos(Double(Int(arc4random_uniform(10)))) + 1
-        insulinLevel = sin(Double(Int(arc4random_uniform(10)))) + 1
-        
-        glucoseLevels.addObject(glucoseLevel)
-        
-        glucoseLabel.text = String(format: "%.5f", glucoseLevel)
-        insulinLabel.text = String(format: "%.5f", insulinLevel)
-        
-        myGraph.reloadGraph()
-    }
-
-    func hydrateValues() {
-        glucoseLevels.removeAllObjects()
-        insulinLevels.removeAllObjects()
-        time.removeAllObjects()
-        
-        
-        previousStepperValue = 1;
-        totalNumber = 0;
-        var showNullValue = true;
-        
-        // Add objects to the array based on the stepper value
-        for(var i=0; i < 100; i++){
-            glucoseLevels.addObject(0)
-            time.addObject(i)
-            totalNumber = totalNumber + Int(glucoseLevels.objectAtIndex(i) as! NSNumber)
-        }
     }
 }

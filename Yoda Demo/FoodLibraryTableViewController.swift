@@ -151,8 +151,6 @@ class FoodLibraryTableViewController: UITableViewController, UITableViewDelegate
             detailViewController!.transferCharacteristic = transferCharacteristic
             detailViewController!.readyToSend = readyToSend
         }
-
-        println(mealLibrary[indexPath.row].foods[0].name)
     }
 
     /*
