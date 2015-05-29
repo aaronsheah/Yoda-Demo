@@ -8,13 +8,12 @@
 
 import UIKit
 
-class VitalsViewController: UIViewController, BEMSimpleLineGraphDelegate {
+class Vitals2ViewController: UIViewController, BEMSimpleLineGraphDelegate {
     var timer = NSTimer()
-    
+
     var glucoseLevels:NSMutableArray = [0,0]
     var insulinLevels:NSMutableArray = [0,0]
-    var time:NSMutableArray = [0,0]
-    
+
     var n_values:Int = 0
     
     @IBOutlet weak var glucLabel: UILabel!
@@ -35,9 +34,9 @@ class VitalsViewController: UIViewController, BEMSimpleLineGraphDelegate {
         lastNValueChanged(0)
         setupGraph()
         // timer = NSTimer.scheduledTimerWithTimeInterval(2, target:self, selector: Selector("refreshGraph:"), userInfo: nil, repeats: true)
-        
+
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -67,49 +66,66 @@ class VitalsViewController: UIViewController, BEMSimpleLineGraphDelegate {
             return 0
         }
     }
-    
     func lineGraph(graph: BEMSimpleLineGraphView, labelOnXAxisForIndex index: Int) -> String {
-        return "\(time[index])"
+        return "\(index * 5)"
     }
-    
+
     func numberOfGapsBetweenLabelsOnLineGraph(graph: BEMSimpleLineGraphView) -> Int {
         return (n_values + 1) * 12
     }
-    
+
     func setupGraph() {
+        var minGluc = BEMAverageLine()
+        minGluc.yValue = 3
+        minGluc.enableAverageLine = true
+        minGluc.color = UIColor(red: 46/255, green: 204/255, blue: 113/255, alpha: 1)
+        minGluc.dashPattern = [5]
+        
+        var maxGluc = BEMAverageLine()
+        maxGluc.yValue = 10
+        maxGluc.enableAverageLine = true
+        maxGluc.color = UIColor(red: 231/255, green: 76/255, blue: 60/255, alpha: 1)
+        maxGluc.dashPattern = [5]
+        
+        glucGraph.minRefLine = minGluc
+        glucGraph.maxRefLine = maxGluc
+        
         glucGraph.enableYAxisLabel = true
         glucGraph.autoScaleYAxis = true
-        //        glucGraph.enableReferenceYAxisLines = true
-        //        glucGraph.enableReferenceXAxisLines = true
         glucGraph.enableReferenceAxisFrame = true
         glucGraph.enableXAxisLabel = true
         glucGraph.animationGraphEntranceTime = 0.5
         glucGraph.enablePopUpReport = true
         glucGraph.enableTouchReport = true
         
+        glucGraph.formatStringForValues = "%.1f"
+        
         insuGraph.enableYAxisLabel = true
         insuGraph.autoScaleYAxis = true
-        //        insuGraph.enableReferenceYAxisLines = true
-        //        insuGraph.enableReferenceXAxisLines = true
         insuGraph.enableReferenceAxisFrame = true
         insuGraph.enableXAxisLabel = true
         insuGraph.animationGraphEntranceTime = 0.5
         insuGraph.enablePopUpReport = true
         insuGraph.enableTouchReport = true
-    }
-    
-    func refreshLabel(item:NSDictionary) {
-        let gluc = item["gluc"] as! String
-        let insu = item["insu"] as! String
         
-        self.glucLabel.text = "\(gluc)"
-        self.insuLabel.text = "\(insu)"
+        insuGraph.formatStringForValues = "%.1f"
+    }
+
+    func refreshLabel(item:NSDictionary) {
+        let gluc = item["gluc"] as? NSString
+        if gluc != nil {
+            glucLabel.text = NSString(format: "%.2f", (gluc!).floatValue) as String
+        }
+        
+        let insu = item["insu"] as? NSString
+        if gluc != nil {
+            insuLabel.text = NSString(format: "%.1f", (insu!).floatValue) as String
+        }
     }
     
     func drawGraph(items:NSArray) {
         glucoseLevels.removeAllObjects()
         insulinLevels.removeAllObjects()
-        time.removeAllObjects()
         
         var counter = 0
         
@@ -119,9 +135,8 @@ class VitalsViewController: UIViewController, BEMSimpleLineGraphDelegate {
             
             glucoseLevels.insertObject(gluc, atIndex: 0)
             insulinLevels.insertObject(insu, atIndex: 0)
-            time.addObject((counter++)*5)
         }
-        
+
         glucGraph.reloadGraph()
         insuGraph.reloadGraph()
     }
@@ -142,11 +157,10 @@ class VitalsViewController: UIViewController, BEMSimpleLineGraphDelegate {
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         
         var task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
-            //            println("Response: \(response)")
             var strData = NSString(data: data, encoding: NSUTF8StringEncoding)
-            //            println("Body: \(strData)")
             var err: NSError?
             if data == nil {
+                println("ERROR")
                 return
             }
             var json = NSJSONSerialization.JSONObjectWithData(data!, options: .MutableLeaves, error: &err) as? NSDictionary
@@ -156,6 +170,9 @@ class VitalsViewController: UIViewController, BEMSimpleLineGraphDelegate {
                 println(err!.localizedDescription)
                 let jsonStr = NSString(data: data!, encoding: NSUTF8StringEncoding)
                 println("Error could not parse JSON: '\(jsonStr)'")
+                
+                // WiFi not available
+                
             }
             else {
                 // The JSONObjectWithData constructor didn't return an error. But, we should still
@@ -185,12 +202,43 @@ class VitalsViewController: UIViewController, BEMSimpleLineGraphDelegate {
     }
     /*
     // MARK: - Navigation
-    
+
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
     }
     */
     
+    func didReceiveData(string: String!) {
+        addTextToConsole(string, dataType: .RX)
+    }
+    
+    /****************************************************************/
+    /**                                                            **/
+    /****************************************************************/
+    
+    func addTextToConsole(string:NSString, dataType:ConsoleDataType) {
+        var direction:NSString
+        
+        switch dataType {
+        case .RX:
+            direction = "RX"
+            break
+        case .TX:
+            direction = "TX"
+            break
+        case .LOGGING:
+            direction = "LOGGING"
+        }
+        
+        var formatter:NSDateFormatter
+        formatter = NSDateFormatter()
+        formatter.dateFormat = "HH:mm:ss.SSS"
+        
+        var output:NSString = "[\(formatter.stringFromDate(NSDate()))] \(direction) \(string)"
+        
+        println(output)
+    }
+
 }

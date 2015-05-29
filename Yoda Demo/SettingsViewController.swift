@@ -1,14 +1,14 @@
 //
-//  SplitViewController.swift
+//  SettingsViewController.swift
 //  Yoda Demo
 //
-//  Created by Aaron Sheah on 10/05/2015.
+//  Created by Aaron Sheah on 29/05/2015.
 //  Copyright (c) 2015 Aaron Sheah. All rights reserved.
 //
 
 import UIKit
 
-class SplitViewController: UISplitViewController {
+class SettingsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

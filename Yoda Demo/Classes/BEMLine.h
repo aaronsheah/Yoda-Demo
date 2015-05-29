@@ -183,6 +183,11 @@ typedef NS_ENUM(NSUInteger, BEMLineGradientDirection) {
 /// The average line's y-value translated into the coordinate system
 @property (nonatomic) CGFloat averageLineYCoordinate;
 
+//----- MIN/MAX REF -----//
+@property (strong, nonatomic) BEMAverageLine *minRefLine;
+@property (nonatomic) CGFloat minRefLineYCoordinate;
+@property (strong, nonatomic) BEMAverageLine *maxRefLine;
+@property (nonatomic) CGFloat maxRefLineYCoordinate;
 
 
 @end

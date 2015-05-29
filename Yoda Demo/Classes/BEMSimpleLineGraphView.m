@@ -198,6 +198,8 @@ typedef NS_ENUM(NSInteger, BEMInternalTags)
 
     // Initialize BEM Objects
     _averageLine = [[BEMAverageLine alloc] init];
+    _minRefLine = [[BEMAverageLine alloc] init];
+    _maxRefLine = [[BEMAverageLine alloc] init];
 }
 
 - (void)prepareForInterfaceBuilder {
@@ -613,6 +615,20 @@ typedef NS_ENUM(NSInteger, BEMInternalTags)
         line.averageLineYCoordinate = [self yPositionForDotValue:self.averageLine.yValue];
         line.averageLine = self.averageLine;
     } else line.averageLine = self.averageLine;
+    
+    
+    if (self.minRefLine.enableAverageLine == YES) {
+        if (self.minRefLine.yValue == 0.0) self.averageLine.yValue = [self calculatePointValueAverage].floatValue;
+        line.minRefLineYCoordinate = [self yPositionForDotValue:self.minRefLine.yValue];
+        line.minRefLine = self.minRefLine;
+    } else line.minRefLine = self.minRefLine;
+    
+    
+    if (self.maxRefLine.enableAverageLine == YES) {
+        if (self.averageLine.yValue == 0.0) self.averageLine.yValue = [self calculatePointValueAverage].floatValue;
+        line.maxRefLineYCoordinate = [self yPositionForDotValue:self.maxRefLine.yValue];
+        line.maxRefLine = self.maxRefLine;
+    } else line.maxRefLine = self.maxRefLine;
     
     line.disableMainLine = self.displayDotsOnly;
     

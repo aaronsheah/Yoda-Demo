@@ -18,24 +18,25 @@ class InfoTableViewController: UITableViewController {
     @IBOutlet weak var choLabel: UILabel!
     @IBOutlet weak var proteinLabel: UILabel!
     @IBOutlet weak var fatLabel: UILabel!
+    @IBOutlet weak var mealWeightLabel: UILabel!
+    @IBOutlet weak var mealSizeLabel: UILabel!
     
     @IBOutlet weak var mealSizeSlider: UISlider!
     @IBAction func mealSizeChange(sender: AnyObject) {
         var temp = Int(mealSizeSlider.value)
-        if temp < 1 {
+        if temp < 60 {
             mealSizeLabel.text = "Low"
-            mealSize = 1
         }
-        else if temp < 2 {
+        else if temp < 90 {
             mealSizeLabel.text = "Medium"
-            mealSize = 2
         }
-        else if temp < 3 {
+        else if temp <= 120 {
             mealSizeLabel.text = "High"
-            mealSize = 3
         }
+        
+        mealSize = temp
+        mealWeightLabel.text = "\(mealSize)g"
     }
-    @IBOutlet weak var mealSizeLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()

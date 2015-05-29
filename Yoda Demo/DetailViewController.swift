@@ -9,97 +9,109 @@
 import UIKit
 import CoreBluetooth
 
-var splitViewController: SplitViewController! = nil
-
 class DetailViewController: UIViewController, BEMSimpleLineGraphDelegate{
+
+    /*****************************  Variables  **********************************/
     
-    var peripheralManager:CBPeripheralManager!
-    var transferCharacteristic:CBMutableCharacteristic!
-    var readyToSend:Bool! = false
-    
+    /************************************
+                Send Via WiFi Options
+    ************************************/
+
     var sendUrl:Bool! = true
     @IBOutlet weak var sendUrlSwitch: UISwitch!
-    @IBAction func sendUrlSwitchAction(sender: AnyObject) {
-        if sendUrlSwitch.on {
-            sendUrl = true
-        }
-        else {
-            sendUrl = false
-        }
+    @IBAction func sendUrlSwitchAction(sender: AnyObject)  {
+        sendUrl = sendUrlSwitch.on
     }
     
+
+    /************************************
+                    Chosen Meal
+    ************************************/
     var meal:Meal = mealLibrary[0] as Meal
     var chosenIndex = 0
     
     @IBOutlet weak var foodImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
 
+
+    /************************************
+                Feed/Reset Yoda
+    ************************************/
+
     @IBOutlet weak var feedYodaButton: UIButton!
     @IBAction func feedYodaAction(sender: AnyObject) {
         sendData("\((meal.foods[chosenIndex] as! Food).id)")
     }
     @IBAction func resetYoda(sender: AnyObject) {
+        var wifi = false
+        var bt = false
+        
+        // Send via WiFi
         if sendUrl! {
             let url = NSURL(string: "http://ic-yoda.appspot.com/id?reset=1")
             let request = NSURLRequest(URL: url!)
             let connection = NSURLConnection(request: request, delegate:nil, startImmediately: true)
+            wifi = true
         }
+        // Send via Bluetooth
+        if state == .CONNECTED {
+            currentPeripheral.writeString("0,0,0,1\n")
+            bt = true
+        }
+        
+        var title = ""
+        var message = "Reset via "
+        if wifi || bt {
+            title = "Yoda Reset"
+            if wifi && !bt {
+                message += "WiFi"
+            }
+            else if !wifi && bt {
+                message += "Bluetooth"
+            }
+            else {
+                message += "WiFi and Bluetooth"
+            }
+        }
+        else {
+            title = "Yoda NOT Reset"
+            message = "WiFi and Bluetooth not available"
+        }
+        
+        let alertView = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        alertView.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
+        presentViewController(alertView, animated: true, completion: nil)
     }
 
-    @IBOutlet weak var descLabel: UILabel!
     @IBOutlet weak var glucoseProfile: BEMSimpleLineGraphView!
     
     var customSC:UISegmentedControl!
-    
+
+    /*****************************  Functions  **********************************/
+
+    /**************************************
+            UIViewController Functions
+    ***************************************/
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = meal.name
         nameLabel.text = meal.name
         foodImage.image = meal.thumbnail
+
+        nameLabel.layer.shadowColor = (UIColor.blackColor()).CGColor
+        nameLabel.layer.shadowOffset = CGSizeMake(0, 10)
+        nameLabel.layer.shadowOpacity = 0.5
         
+        // If more than one variation of meal ie: Low Fat Pasta, Medium Fat Pasta, High Fat Pasta
         if meal.foods.count != 1 {
-            self.title = "\(meal.name) (\((meal.foods[chosenIndex] as! Food).name))"
-            
-            var names:NSMutableArray = []
-
-            for temp in meal.foods {
-                var food = temp as! Food
-                names.addObject(food.name)
-            }
-            
-            // Initialize
-            customSC = UISegmentedControl(items: names as [AnyObject])
-            customSC.selectedSegmentIndex = chosenIndex
-            
-            // Set up Frame and SegmentedControl
-            let frame = UIScreen.mainScreen().bounds
-            var width:CGFloat = 60 * CGFloat(names.count)
-            customSC.frame = CGRectMake(10, 75, width, 28)
-            
-            // Style the Segmented Control
-            customSC.layer.cornerRadius = 5.0  // Don't let background bleed
-            customSC.backgroundColor = UIColor.whiteColor()
-            customSC.tintColor = UIColor.blueColor()
-            
-            // Add target action method
-            customSC.addTarget(self, action: "reloadPage", forControlEvents: .ValueChanged)
-            
-            // Add this custom Segmented Control to our view
-            self.view.addSubview(customSC)
+            addSegmentedControl()
         }
-        
-        // Do any additional setup after loading the view.
-        setupGraph()
-        
-        feedYodaButton.layer.cornerRadius = 5
-    }
 
-    func reloadPage() {
-        chosenIndex = customSC.selectedSegmentIndex
+        feedYodaButton.layer.cornerRadius = 5
         
-        self.viewDidLoad()
-        self.viewWillAppear(true)
+        setupGraph()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -111,19 +123,53 @@ class DetailViewController: UIViewController, BEMSimpleLineGraphDelegate{
         // Dispose of any resources that can be recreated.
     }
 
-    func setupGraph() {
-        glucoseProfile.animationGraphEntranceTime = 1.5
-        glucoseProfile.enableReferenceAxisFrame = true
-        
-//        glucoseProfile.layer.borderColor = UIColor.blackColor().CGColor
-//        glucoseProfile.layer.cornerRadius = 5
-//        glucoseProfile.layer.borderWidth = 1
-        
-        glucoseProfile.enableBezierCurve = false
-        
+    /**************************************
+            Add UISegmentedControl
+    ***************************************/
+
+    func addSegmentedControl () {
+        self.title = "\(meal.name) (\((meal.foods[chosenIndex] as! Food).name))"
+
+        var names:NSMutableArray = []
+
+        for temp in meal.foods {
+            var food = temp as! Food
+            names.addObject(food.name)
+        }
+
+        // Initialize
+        customSC = UISegmentedControl(items: names as [AnyObject])
+        customSC.selectedSegmentIndex = chosenIndex
+
+        // Set up Frame and SegmentedControl
+        let frame = UIScreen.mainScreen().bounds
+        var width:CGFloat = 60 * CGFloat(names.count)
+        customSC.frame = CGRectMake(10, 75, width, 28)
+
+        // Style the Segmented Control
+        customSC.layer.cornerRadius = 5.0  // Don't let background bleed
+        customSC.backgroundColor = UIColor.whiteColor()
+        customSC.tintColor = UIColor.blueColor()
+
+        // Add target action method
+        customSC.addTarget(self, action: "reloadPage", forControlEvents: .ValueChanged)
+
+        // Add this custom Segmented Control to our view
+        self.view.addSubview(customSC)
     }
-    
-    // MARK: - Navigation
+
+    func reloadPage() {
+        chosenIndex = customSC.selectedSegmentIndex
+        
+        self.viewDidLoad()
+        self.viewWillAppear(true)
+    }
+
+    /**************************************
+        Segue to InfoTableViewController
+    ***************************************/
+
+    // MARK: - Pass data to InfoTableViewController
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -135,7 +181,17 @@ class DetailViewController: UIViewController, BEMSimpleLineGraphDelegate{
         }
     }
 
-    // MARK: Graph
+    /************************************
+        BEMSImpleLineGraph Function
+    ************************************/
+    
+    func setupGraph() {
+        glucoseProfile.animationGraphEntranceTime = 1.5
+        glucoseProfile.enableReferenceAxisFrame = true
+        glucoseProfile.enableBezierCurve = false
+    }
+
+    // MARK: Delegate Functions
     func numberOfPointsInLineGraph(graph: BEMSimpleLineGraphView) -> Int {
         let food:Food = meal.foods[chosenIndex] as! Food
         return food.glucoseProfile.count
@@ -154,53 +210,81 @@ class DetailViewController: UIViewController, BEMSimpleLineGraphDelegate{
     func numberOfGapsBetweenLabelsOnLineGraph(graph: BEMSimpleLineGraphView) -> Int {
         return 11
     }
-    
+
+    /**************************************
+            Bluetooth/WiFi Send Data
+    ***************************************/
     func sendData(data:String) {
+        // Send via WiFi
         if sendUrl! {
             let url = NSURL(string: "http://ic-yoda.appspot.com/id?id=\(data)&size=\(mealSize)")
             let request = NSURLRequest(URL: url!)
             let connection = NSURLConnection(request: request, delegate:nil, startImmediately: true)
         }
-        
-        if(!readyToSend) {
-            println("Not Ready to Send : \(data)")
-            
-            var alertView:UIAlertController!
-            if sendUrl! {
-                alertView = UIAlertController(title: "Yoda Fed!", message: "Yoda just ate \(meal.name) via WiFi", preferredStyle: .Alert)
-                
-            }
-            else {
-                alertView = UIAlertController(title: "Yoda NOT Fed!", message: ":(", preferredStyle: .Alert)
-            }
-            alertView.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
-            presentViewController(alertView, animated: true, completion: nil)
-            return
+        // Send via Bluetooth
+        var sentBT = false
+        if state == .CONNECTED {
+            currentPeripheral.writeString("D,\(data),0,\(mealSize),0\n")
+            addTextToConsole("D,\(data),0,\(mealSize),0\n", dataType: .TX)
+            sentBT = true
         }
         
-        var didSend:Bool = true
+        var title = ""
+        var message = ""
         
-        let chunk = (data as NSString).dataUsingEncoding(NSUTF8StringEncoding)
-        
-        didSend = peripheralManager.updateValue(chunk, forCharacteristic: transferCharacteristic, onSubscribedCentrals: nil)
-        
-        if(didSend) {
-            println("Sent : \(data)")
-            
-            var alertView:UIAlertController!
-            if sendUrl! {
-                alertView = UIAlertController(title: "Yoda Fed!", message: "Yoda just ate \(meal.name) via WiFi & Bluetooth", preferredStyle: .Alert)
-            }
-            else {
-                alertView = UIAlertController(title: "Yoda Fed!", message: "Yoda just ate \(meal.name) via Bluetooth", preferredStyle: .Alert)
-            }
-            alertView.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
-            presentViewController(alertView, animated: true, completion: nil)
+        if !(sendUrl!) && !(sentBT) {
+            title = "Yoda NOT Fed!"
+            message = ":("
         }
         else {
-            let alertView = UIAlertController(title: "Yoda NOT Fed!", message: ":(", preferredStyle: .Alert)
-            alertView.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
-            presentViewController(alertView, animated: true, completion: nil)
+            title = "Yoda Fed!"
+            message = "Yoda just ate \(meal.name) via "
+            if (sendUrl!) && !(sentBT) {
+                message += "WiFi"
+            }
+            else if !(sendUrl!) && (sentBT) {
+                message += "Bluetooth"
+            }
+            else {
+                message += "WiFi and Bluetooth"
+            }
         }
+        
+        let alertView = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        alertView.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
+        presentViewController(alertView, animated: true, completion: nil)
     }
+    
+    func didReceiveData(string: String!) {
+        addTextToConsole(string, dataType: .RX)
+    }
+    
+    /****************************************************************/
+    /**                                                            **/
+    /****************************************************************/
+    
+    func addTextToConsole(string:NSString, dataType:ConsoleDataType) {
+        var direction:NSString
+        
+        switch dataType {
+        case .RX:
+            direction = "RX"
+            break
+        case .TX:
+            direction = "TX"
+            break
+        case .LOGGING:
+            direction = "LOGGING"
+        }
+        
+        var formatter:NSDateFormatter
+        formatter = NSDateFormatter()
+        formatter.dateFormat = "HH:mm:ss.SSS"
+        
+        var output:NSString = "[\(formatter.stringFromDate(NSDate()))] \(direction) \(string)"
+        
+        println(output)
+    }
+
+    
 }

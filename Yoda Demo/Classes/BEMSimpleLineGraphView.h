@@ -181,6 +181,14 @@ IB_DESIGNABLE @interface BEMSimpleLineGraphView : UIView <UIGestureRecognizerDel
 @property (strong, nonatomic) BEMAverageLine *averageLine;
 
 
+/********************************************************************************/
+
+@property (strong, nonatomic) BEMAverageLine *minRefLine;
+@property (strong, nonatomic) BEMAverageLine *maxRefLine;
+
+/********************************************************************************/
+
+
 /// Draws a translucent vertical lines along the graph for each X-Axis when set to YES. Default value is NO.
 @property (nonatomic) BOOL enableReferenceXAxisLines;
 

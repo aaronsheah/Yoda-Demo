@@ -1,5 +1,16 @@
 import UIKit
 
+/***************************
+            Meal Class
+ 
+Description : holds the various Food Class instances
+
+Example : Pizza of type Meal holds Large Pizza, Medium Pizza, and Small Pizza of type Food
+
+Usage : init function = Meal(name:String, thumbnail:String, foods:NSArray)
+
+***************************/
+
 class Meal {
     
     var name:String = "name-not-assigned"
@@ -13,36 +24,37 @@ class Meal {
     }
 }
 
+/***************************
+            Food Class
+ 
+Description : contains the information about the food
+
+Info :
+    name
+    description
+    id
+    thumbnail
+    glucoseProfile
+    Carbohydrates
+    Protein
+    Fat
+
+Usage : init function = Food(name:String, description:String, id:Int, thumbnail:String, glucoseProfile:NSMutableArray, cho:Float, protein:Float, fat:Float)
+
+***************************/
+
 class Food {
     var name:String = "name-not-assigned"
     var description:String = "desc-not-assigned"
     var id:Int = -1
     var thumbnail:UIImage = UIImage()
-    var calories:Int = -1
     
-    var glucoseProfile:NSMutableArray = [0,1,2,3,4,5,4,3,2,1,0]
-    var glucoseTime:NSMutableArray = []
+    var glucoseProfile:NSMutableArray = [-1]
+    var glucoseTime:NSMutableArray = [-1]
     var cho:Float = -1
     var protein:Float = -1
     var fat:Float = -1
-    
-    init(name:String, description:String, id:Int, thumbnail:String, glucoseProfile:NSMutableArray) {
-        self.name = name
-        self.description = description
-        self.id = id
-        self.thumbnail = UIImage(named: thumbnail)!
-        self.glucoseProfile = glucoseProfile
-    }
-//    init(name:String, description:String, id:Int, thumbnail:String, glucoseProfile:NSMutableArray, cho:Float, protein:Float, fat:Float) {
-//        self.name = name
-//        self.description = description
-//        self.id = id
-//        self.thumbnail = UIImage(named: thumbnail)!
-//        self.glucoseProfile = glucoseProfile
-//        self.cho = cho
-//        self.protein = protein
-//        self.fat = fat
-//    }
+
     init(name:String, description:String, id:Int, thumbnail:String, glucoseProfile:NSMutableArray, cho:Float, protein:Float, fat:Float) {
         self.name = name
         self.description = description
@@ -59,13 +71,12 @@ class Food {
             counter = counter + 1
             glucoseTime.addObject(counter * 5)
         }
-    
-    }
-    init() {
-        
     }
 }
 
+/***************************
+              16 Meals
+***************************/
 
 let bacon_and_eggs = Meal(
     name: "Bacon & Eggs",
@@ -78,7 +89,6 @@ let bacon_and_eggs = Meal(
             thumbnail: "bacon-and-eggs.jpg",
             glucoseProfile:[
                 0,31.798,177.49,371.74,538.26,629.55,655.52,647.28,624.07,595.15,564.79,534.9,506.27,479.15,453.54,429.35,406.47,384.78,364.18,344.59,325.95,308.2,291.3,275.22,259.93,245.38,231.57,218.46,206.02,194.24,183.08,172.51,162.52,153.08,144.15,135.73,127.78,120.28,113.2,106.53,100.25,94.324,88.745,83.49,78.542,73.884,69.498,65.371,61.487,57.832,54.393,51.16,48.12,45.266,42.592,40.094,37.775,35.645,33.723,32.043
-
             ],
             cho: 45,
             protein: 15,
@@ -86,8 +96,6 @@ let bacon_and_eggs = Meal(
         )
     ]
 )
-
-
 
 let cheese_sandwich = Meal(
     name: "Cheese Sandiwch",
@@ -107,7 +115,6 @@ let cheese_sandwich = Meal(
         )
     ]
 )
-
 
 let full_breakfast = Meal(
     name: "Full Breakfast", 
@@ -293,42 +300,42 @@ let whipped_cream_cereal = Meal(
 )
 
 let oats1 = Food(
-    name: "Oats1", 
+    name: "1", 
     description: "Oats, coconut, almonds, raisins, honey, sunflower oil, banana, double cream and milk", 
     id: 13,
     thumbnail: "oats.jpeg",
     glucoseProfile: [
         0,9.7188,56.469,125.26,199.42,269.22,328.34,371.61,396.13,405.36,406.94,406.59,406.49,406.78,406.9,406.33,404.78,402.16,398.56,394.19,389.27,384.05,378.69,373.24,367.58,361.46,354.53,346.42,336.85,325.73,313.15,299.31,284.55,269.2,253.6,238.02,222.71,207.83,193.52,179.86,166.9,154.67,143.17,132.4,122.34,112.96,104.23,96.117,88.59,81.613,75.154,69.177,63.652,58.548,53.835,49.486,45.475,41.778,38.371,35.232
     ],
-            cho: 48.6,
-            protein: 6.9,
-            fat: 48
+    cho: 48.6,
+    protein: 6.9,
+    fat: 48
 )
 
 let oats2 = Food(
-    name: "Oats2", 
+    name: "2", 
     description: "Oats, coconut, almonds, raisins, honey, sunflower oil, banana, double cream and milk", 
     id: 14,
      thumbnail: "oats.jpeg", 
     glucoseProfile: [
         0,58.984,108.68,150.19,198.46,238.81,272.12,299.26,320.99,337.98,350.84,360.12,366.31,369.82,371.07,370.41,368.17,364.65,360.15,354.95,349.34,343.6,338.01,332.88,328.49,325.12,323.02,322.3,322.95,324.63,326.65,327.93,327.16,323.16,315.3,303.66,288.94,272.11,254.15,235.87,217.86,200.5,184.02,168.56,154.16,140.82,128.51,117.2,106.81,97.297,88.594,80.641,73.38,66.755,60.714,55.208,50.192,45.624,41.465,37.68
     ],
-            cho: 28.2,
-            protein: 6.6,
-            fat: 65.2
+    cho: 28.2,
+    protein: 6.6,
+    fat: 65.2
 )
 
 let oats3 = Food(
-    name: "Oats3", 
+    name: "3", 
     description: "Oats, coconut, almonds, raisins, honey, sunflower oil, banana, double cream and milk", 
     id: 15,
      thumbnail: "oats.jpeg", 
     glucoseProfile: [
         0,14.241,48.502,95.83,145.53,191.87,232.74,267.66,296.85,320.79,340.08,355.3,367.05,375.89,382.34,386.91,390.08,392.28,393.92,395.32,396.71,398.17,399.59,400.61,400.71,399.18,395.38,388.84,379.37,367.15,352.59,336.25,318.72,300.58,282.27,264.17,246.54,229.57,213.37,198.02,183.54,169.95,157.22,145.34,134.26,123.96,114.39,105.51,97.282,89.659,82.605,76.08,70.05,64.479,59.335,54.588,50.208,46.169,42.446,39.014
     ],
-            cho: 20,
-            protein: 6.1,
-            fat: 73.9
+    cho: 20,
+    protein: 6.1,
+    fat: 73.9
 )
 
 let oats = Meal(
@@ -360,24 +367,9 @@ let breakfast = Meal(
     ]
 )
 
-//let foodLibrary = [
-//    bacon_and_eggs,
-//    cheese_sandwich,
-//    full_breakfast,
-//    pasta_low,
-////    pasta_medium,
-////    pasta_high,
-//    rice_pudding,
-//    french_toast,
-//    barley,
-//    mashed_potato,
-//    eggs_and_toast,
-//    whipped_cream_cereal,
-//    oats1,
-////    oats2,
-////    oats3,
-//    breakfast
-//]
+/***************************
+            Meal Library
+***************************/
 
 let mealLibrary = [
     bacon_and_eggs,

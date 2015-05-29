@@ -17,6 +17,8 @@
 		B61B19051AFC189700E2C72B /* barley.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B61B19041AFC189700E2C72B /* barley.jpg */; };
 		B61B19071AFC190200E2C72B /* eggs-and-toast.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B61B19061AFC190200E2C72B /* eggs-and-toast.jpg */; };
 		B61B19091AFC19BA00E2C72B /* breakfast.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B61B19081AFC19BA00E2C72B /* breakfast.jpg */; };
+		B61D60861B0E69DA0026031D /* Vitals2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61D60851B0E69DA0026031D /* Vitals2ViewController.swift */; };
+		B61D60891B0FC5080026031D /* UARTPeripheral.m in Sources */ = {isa = PBXBuildFile; fileRef = B61D60881B0FC5080026031D /* UARTPeripheral.m */; };
 		B66325D71AF6CD61006F313A /* VitalsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66325D61AF6CD61006F313A /* VitalsViewController.swift */; };
 		B66325E41AF6D51A006F313A /* BEMAverageLine.m in Sources */ = {isa = PBXBuildFile; fileRef = B66325DB1AF6D51A006F313A /* BEMAverageLine.m */; };
 		B66325E51AF6D51A006F313A /* BEMCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = B66325DD1AF6D51A006F313A /* BEMCircle.m */; };
@@ -50,9 +52,16 @@
 		B679800E1AF2C7F100516697 /* eat.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B679800D1AF2C7F100516697 /* eat.mp3 */; };
 		B67980101AF2C91600516697 /* speech.png in Resources */ = {isa = PBXBuildFile; fileRef = B679800F1AF2C91600516697 /* speech.png */; };
 		B67980121AF2DEE700516697 /* graph.png in Resources */ = {isa = PBXBuildFile; fileRef = B67980111AF2DEE700516697 /* graph.png */; };
+		B689D5111B16322900B24E86 /* UUBar.m in Sources */ = {isa = PBXBuildFile; fileRef = B689D5061B16322900B24E86 /* UUBar.m */; };
+		B689D5121B16322900B24E86 /* UUBarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = B689D5081B16322900B24E86 /* UUBarChart.m */; };
+		B689D5131B16322900B24E86 /* UUChart.m in Sources */ = {isa = PBXBuildFile; fileRef = B689D50A1B16322900B24E86 /* UUChart.m */; };
+		B689D5141B16322900B24E86 /* UUChartLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B689D50C1B16322900B24E86 /* UUChartLabel.m */; };
+		B689D5151B16322900B24E86 /* UUColor.m in Sources */ = {isa = PBXBuildFile; fileRef = B689D50E1B16322900B24E86 /* UUColor.m */; };
+		B689D5161B16322900B24E86 /* UULineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = B689D5101B16322900B24E86 /* UULineChart.m */; };
+		B68F560C1B175AEA0078247F /* GlucoseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68F560B1B175AEA0078247F /* GlucoseViewController.swift */; };
+		B68F560E1B1899110078247F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68F560D1B1899110078247F /* SettingsViewController.swift */; };
 		B6D9F4901AFFB3FF0058B643 /* PeripheralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D9F48F1AFFB3FF0058B643 /* PeripheralViewController.swift */; };
 		B6D9F4921AFFB41D0058B643 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6D9F4911AFFB41D0058B643 /* CoreBluetooth.framework */; };
-		B6D9F4941AFFB9860058B643 /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D9F4931AFFB9860058B643 /* SplitViewController.swift */; };
 		B6E54E231B063B32004854AA /* InfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E54E221B063B32004854AA /* InfoTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +86,9 @@
 		B61B19041AFC189700E2C72B /* barley.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = barley.jpg; sourceTree = "<group>"; };
 		B61B19061AFC190200E2C72B /* eggs-and-toast.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "eggs-and-toast.jpg"; sourceTree = "<group>"; };
 		B61B19081AFC19BA00E2C72B /* breakfast.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = breakfast.jpg; sourceTree = "<group>"; };
+		B61D60851B0E69DA0026031D /* Vitals2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vitals2ViewController.swift; sourceTree = "<group>"; };
+		B61D60871B0FC5080026031D /* UARTPeripheral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UARTPeripheral.h; sourceTree = "<group>"; };
+		B61D60881B0FC5080026031D /* UARTPeripheral.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UARTPeripheral.m; sourceTree = "<group>"; };
 		B66325D61AF6CD61006F313A /* VitalsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VitalsViewController.swift; sourceTree = "<group>"; };
 		B66325DA1AF6D51A006F313A /* BEMAverageLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEMAverageLine.h; sourceTree = "<group>"; };
 		B66325DB1AF6D51A006F313A /* BEMAverageLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEMAverageLine.m; sourceTree = "<group>"; };
@@ -88,6 +100,7 @@
 		B66325E11AF6D51A006F313A /* BEMPermanentPopupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEMPermanentPopupView.m; sourceTree = "<group>"; };
 		B66325E21AF6D51A006F313A /* BEMSimpleLineGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEMSimpleLineGraphView.h; sourceTree = "<group>"; };
 		B66325E31AF6D51A006F313A /* BEMSimpleLineGraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEMSimpleLineGraphView.m; sourceTree = "<group>"; };
+		B6788C3A1B0FE49800E3BE2B /* YodaDemo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YodaDemo.h; sourceTree = "<group>"; };
 		B6797FAC1AF29DF700516697 /* Yoda Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Yoda Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6797FB01AF29DF700516697 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B6797FB11AF29DF700516697 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -119,9 +132,22 @@
 		B679800D1AF2C7F100516697 /* eat.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = eat.mp3; sourceTree = "<group>"; };
 		B679800F1AF2C91600516697 /* speech.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = speech.png; path = Images.xcassets/speech.png; sourceTree = "<group>"; };
 		B67980111AF2DEE700516697 /* graph.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = graph.png; path = Images.xcassets/graph.png; sourceTree = "<group>"; };
+		B689D5051B16322900B24E86 /* UUBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUBar.h; sourceTree = "<group>"; };
+		B689D5061B16322900B24E86 /* UUBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUBar.m; sourceTree = "<group>"; };
+		B689D5071B16322900B24E86 /* UUBarChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUBarChart.h; sourceTree = "<group>"; };
+		B689D5081B16322900B24E86 /* UUBarChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUBarChart.m; sourceTree = "<group>"; };
+		B689D5091B16322900B24E86 /* UUChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUChart.h; sourceTree = "<group>"; };
+		B689D50A1B16322900B24E86 /* UUChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUChart.m; sourceTree = "<group>"; };
+		B689D50B1B16322900B24E86 /* UUChartLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUChartLabel.h; sourceTree = "<group>"; };
+		B689D50C1B16322900B24E86 /* UUChartLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUChartLabel.m; sourceTree = "<group>"; };
+		B689D50D1B16322900B24E86 /* UUColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUColor.h; sourceTree = "<group>"; };
+		B689D50E1B16322900B24E86 /* UUColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUColor.m; sourceTree = "<group>"; };
+		B689D50F1B16322900B24E86 /* UULineChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UULineChart.h; sourceTree = "<group>"; };
+		B689D5101B16322900B24E86 /* UULineChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UULineChart.m; sourceTree = "<group>"; };
+		B68F560B1B175AEA0078247F /* GlucoseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlucoseViewController.swift; sourceTree = "<group>"; };
+		B68F560D1B1899110078247F /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		B6D9F48F1AFFB3FF0058B643 /* PeripheralViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeripheralViewController.swift; sourceTree = "<group>"; };
 		B6D9F4911AFFB41D0058B643 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
-		B6D9F4931AFFB9860058B643 /* SplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
 		B6E54E221B063B32004854AA /* InfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -144,6 +170,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B61D608A1B0FC5130026031D /* UART */ = {
+			isa = PBXGroup;
+			children = (
+				B61D60871B0FC5080026031D /* UARTPeripheral.h */,
+				B61D60881B0FC5080026031D /* UARTPeripheral.m */,
+			);
+			name = UART;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		B66325D81AF6CD79006F313A /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -151,10 +187,12 @@
 				B6797FB11AF29DF700516697 /* AppDelegate.swift */,
 				B6797FD91AF2A4D200516697 /* FoodLibraryTableViewController.swift */,
 				B67980011AF2BD6600516697 /* YodaViewController.swift */,
-				B66325D61AF6CD61006F313A /* VitalsViewController.swift */,
 				B61B18F41AFBD88300E2C72B /* DetailViewController.swift */,
-				B6D9F4931AFFB9860058B643 /* SplitViewController.swift */,
 				B6E54E221B063B32004854AA /* InfoTableViewController.swift */,
+				B66325D61AF6CD61006F313A /* VitalsViewController.swift */,
+				B61D60851B0E69DA0026031D /* Vitals2ViewController.swift */,
+				B68F560B1B175AEA0078247F /* GlucoseViewController.swift */,
+				B68F560D1B1899110078247F /* SettingsViewController.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -162,16 +200,9 @@
 		B66325D91AF6D51A006F313A /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				B66325DA1AF6D51A006F313A /* BEMAverageLine.h */,
-				B66325DB1AF6D51A006F313A /* BEMAverageLine.m */,
-				B66325DC1AF6D51A006F313A /* BEMCircle.h */,
-				B66325DD1AF6D51A006F313A /* BEMCircle.m */,
-				B66325DE1AF6D51A006F313A /* BEMLine.h */,
-				B66325DF1AF6D51A006F313A /* BEMLine.m */,
-				B66325E01AF6D51A006F313A /* BEMPermanentPopupView.h */,
-				B66325E11AF6D51A006F313A /* BEMPermanentPopupView.m */,
-				B66325E21AF6D51A006F313A /* BEMSimpleLineGraphView.h */,
-				B66325E31AF6D51A006F313A /* BEMSimpleLineGraphView.m */,
+				B61D608A1B0FC5130026031D /* UART */,
+				B689D5041B16322900B24E86 /* UUChart */,
+				B689D5171B16323700B24E86 /* BEMSimpleLineGraph */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -183,6 +214,7 @@
 				B6797FAE1AF29DF700516697 /* Yoda Demo */,
 				B6797FC71AF29DF700516697 /* Yoda DemoTests */,
 				B6797FAD1AF29DF700516697 /* Products */,
+				B6788C3A1B0FE49800E3BE2B /* YodaDemo.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -294,6 +326,42 @@
 			);
 			name = "Food Thumbnails";
 			path = "../Yoda Demo.xcodeproj/Food Thumbnails";
+			sourceTree = "<group>";
+		};
+		B689D5041B16322900B24E86 /* UUChart */ = {
+			isa = PBXGroup;
+			children = (
+				B689D5051B16322900B24E86 /* UUBar.h */,
+				B689D5061B16322900B24E86 /* UUBar.m */,
+				B689D5071B16322900B24E86 /* UUBarChart.h */,
+				B689D5081B16322900B24E86 /* UUBarChart.m */,
+				B689D5091B16322900B24E86 /* UUChart.h */,
+				B689D50A1B16322900B24E86 /* UUChart.m */,
+				B689D50B1B16322900B24E86 /* UUChartLabel.h */,
+				B689D50C1B16322900B24E86 /* UUChartLabel.m */,
+				B689D50D1B16322900B24E86 /* UUColor.h */,
+				B689D50E1B16322900B24E86 /* UUColor.m */,
+				B689D50F1B16322900B24E86 /* UULineChart.h */,
+				B689D5101B16322900B24E86 /* UULineChart.m */,
+			);
+			path = UUChart;
+			sourceTree = "<group>";
+		};
+		B689D5171B16323700B24E86 /* BEMSimpleLineGraph */ = {
+			isa = PBXGroup;
+			children = (
+				B66325DA1AF6D51A006F313A /* BEMAverageLine.h */,
+				B66325DB1AF6D51A006F313A /* BEMAverageLine.m */,
+				B66325DC1AF6D51A006F313A /* BEMCircle.h */,
+				B66325DD1AF6D51A006F313A /* BEMCircle.m */,
+				B66325DE1AF6D51A006F313A /* BEMLine.h */,
+				B66325DF1AF6D51A006F313A /* BEMLine.m */,
+				B66325E01AF6D51A006F313A /* BEMPermanentPopupView.h */,
+				B66325E11AF6D51A006F313A /* BEMPermanentPopupView.m */,
+				B66325E21AF6D51A006F313A /* BEMSimpleLineGraphView.h */,
+				B66325E31AF6D51A006F313A /* BEMSimpleLineGraphView.m */,
+			);
+			name = BEMSimpleLineGraph;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -424,20 +492,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				B66325E81AF6D51A006F313A /* BEMSimpleLineGraphView.m in Sources */,
-				B6D9F4941AFFB9860058B643 /* SplitViewController.swift in Sources */,
+				B689D5141B16322900B24E86 /* UUChartLabel.m in Sources */,
 				B6797FD61AF29F9900516697 /* food.swift in Sources */,
 				B66325E41AF6D51A006F313A /* BEMAverageLine.m in Sources */,
+				B61D60891B0FC5080026031D /* UARTPeripheral.m in Sources */,
+				B689D5111B16322900B24E86 /* UUBar.m in Sources */,
 				B6D9F4901AFFB3FF0058B643 /* PeripheralViewController.swift in Sources */,
+				B689D5131B16322900B24E86 /* UUChart.m in Sources */,
 				B61B18F51AFBD88300E2C72B /* DetailViewController.swift in Sources */,
 				B6E54E231B063B32004854AA /* InfoTableViewController.swift in Sources */,
+				B689D5121B16322900B24E86 /* UUBarChart.m in Sources */,
+				B689D5151B16322900B24E86 /* UUColor.m in Sources */,
 				B67980021AF2BD6600516697 /* YodaViewController.swift in Sources */,
 				B66325E71AF6D51A006F313A /* BEMPermanentPopupView.m in Sources */,
 				B6797FB21AF29DF700516697 /* AppDelegate.swift in Sources */,
 				B66325E51AF6D51A006F313A /* BEMCircle.m in Sources */,
 				B66325E61AF6D51A006F313A /* BEMLine.m in Sources */,
 				B6797FDA1AF2A4D200516697 /* FoodLibraryTableViewController.swift in Sources */,
+				B689D5161B16322900B24E86 /* UULineChart.m in Sources */,
+				B68F560C1B175AEA0078247F /* GlucoseViewController.swift in Sources */,
 				B6797FB51AF29DF700516697 /* Yoda_Demo.xcdatamodeld in Sources */,
+				B61D60861B0E69DA0026031D /* Vitals2ViewController.swift in Sources */,
 				B66325D71AF6CD61006F313A /* VitalsViewController.swift in Sources */,
+				B68F560E1B1899110078247F /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -570,7 +647,7 @@
 				INFOPLIST_FILE = "Yoda Demo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/aaronsheah/Documents/Yoda Demo/Yoda Demo/Classes/BEMSimpleLineGraphView.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/aaronsheah/Documents/Yoda Demo/YodaDemo.h";
 			};
 			name = Debug;
 		};
@@ -582,7 +659,7 @@
 				INFOPLIST_FILE = "Yoda Demo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/aaronsheah/Documents/Yoda Demo/Yoda Demo/Classes/BEMSimpleLineGraphView.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/aaronsheah/Documents/Yoda Demo/YodaDemo.h";
 			};
 			name = Release;
 		};

@@ -128,6 +128,40 @@
         [averageLinePath closePath];
     }
     
+    //----------------------------//
+    //----- Draw MIN REF Line ----//
+    //----------------------------//
+    UIBezierPath *minRefLinePath = [UIBezierPath bezierPath];
+    if (self.minRefLine.enableAverageLine == YES) {
+        minRefLinePath.lineCapStyle = kCGLineCapButt;
+        minRefLinePath.lineWidth = self.minRefLine.width;
+        
+        CGPoint initialPoint = CGPointMake(0, self.minRefLineYCoordinate);
+        CGPoint finalPoint = CGPointMake(self.frame.size.width, self.minRefLineYCoordinate);
+        
+        [minRefLinePath moveToPoint:initialPoint];
+        [minRefLinePath addLineToPoint:finalPoint];
+        
+        [minRefLinePath closePath];
+    }
+    
+    //----------------------------//
+    //----- Draw MAX REF Line ----//
+    //----------------------------//
+    UIBezierPath *maxRefLinePath = [UIBezierPath bezierPath];
+    if (self.maxRefLine.enableAverageLine == YES) {
+        maxRefLinePath.lineCapStyle = kCGLineCapButt;
+        maxRefLinePath.lineWidth = self.maxRefLine.width;
+        
+        CGPoint initialPoint = CGPointMake(0, self.maxRefLineYCoordinate);
+        CGPoint finalPoint = CGPointMake(self.frame.size.width, self.maxRefLineYCoordinate);
+        
+        [maxRefLinePath moveToPoint:initialPoint];
+        [maxRefLinePath addLineToPoint:finalPoint];
+        
+        [maxRefLinePath closePath];
+    }
+    
     
     //----------------------------//
     //------ Draw Graph Line -----//
@@ -351,6 +385,42 @@
         if (self.animationTime > 0)
             [self animateForLayer:averageLinePathLayer withAnimationType:self.animationType isAnimatingReferenceLine:NO];
         [self.layer addSublayer:averageLinePathLayer];
+    }
+    
+    if (self.minRefLine.enableAverageLine == YES) {
+        CAShapeLayer *minRefLinePathLayer = [CAShapeLayer layer];
+        minRefLinePathLayer.frame = self.bounds;
+        minRefLinePathLayer.path = minRefLinePath.CGPath;
+        minRefLinePathLayer.opacity = self.minRefLine.alpha;
+        minRefLinePathLayer.fillColor = nil;
+        minRefLinePathLayer.lineWidth = self.minRefLine.width;
+        
+        if (self.minRefLine.dashPattern) minRefLinePathLayer.lineDashPattern = self.minRefLine.dashPattern;
+        
+        if (self.minRefLine.color) minRefLinePathLayer.strokeColor = self.minRefLine.color.CGColor;
+        else minRefLinePathLayer.strokeColor = self.color.CGColor;
+        
+        if (self.animationTime > 0)
+            [self animateForLayer:minRefLinePathLayer withAnimationType:self.animationType isAnimatingReferenceLine:NO];
+        [self.layer addSublayer:minRefLinePathLayer];
+    }
+    
+    if (self.maxRefLine.enableAverageLine == YES) {
+        CAShapeLayer *maxRefLinePathLayer = [CAShapeLayer layer];
+        maxRefLinePathLayer.frame = self.bounds;
+        maxRefLinePathLayer.path = maxRefLinePath.CGPath;
+        maxRefLinePathLayer.opacity = self.maxRefLine.alpha;
+        maxRefLinePathLayer.fillColor = nil;
+        maxRefLinePathLayer.lineWidth = self.maxRefLine.width;
+        
+        if (self.maxRefLine.dashPattern) maxRefLinePathLayer.lineDashPattern = self.maxRefLine.dashPattern;
+        
+        if (self.maxRefLine.color) maxRefLinePathLayer.strokeColor = self.maxRefLine.color.CGColor;
+        else maxRefLinePathLayer.strokeColor = self.color.CGColor;
+        
+        if (self.animationTime > 0)
+            [self animateForLayer:maxRefLinePathLayer withAnimationType:self.animationType isAnimatingReferenceLine:NO];
+        [self.layer addSublayer:maxRefLinePathLayer];
     }
 }
 
