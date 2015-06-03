@@ -42,6 +42,10 @@ class Vitals2ViewController: UIViewController, BEMSimpleLineGraphDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    /***********************/
+    /*** Graph Methods ***/
+    /***********************/
+
     func numberOfPointsInLineGraph(graph: BEMSimpleLineGraphView) -> Int {
         if graph === glucGraph {
             return glucoseLevels.count
@@ -127,14 +131,12 @@ class Vitals2ViewController: UIViewController, BEMSimpleLineGraphDelegate {
         glucoseLevels.removeAllObjects()
         insulinLevels.removeAllObjects()
         
-        var counter = 0
-        
         for item in items {
             let gluc = (item["gluc"] as! NSString).floatValue
             let insu = (item["insu"] as! NSString).floatValue
             
-            glucoseLevels.insertObject(gluc, atIndex: 0)
-            insulinLevels.insertObject(insu, atIndex: 0)
+            glucoseLevels.addObject(gluc)
+            insulinLevels.addObject(insu)
         }
 
         glucGraph.reloadGraph()
@@ -178,14 +180,14 @@ class Vitals2ViewController: UIViewController, BEMSimpleLineGraphDelegate {
                 // The JSONObjectWithData constructor didn't return an error. But, we should still
                 // check and make sure that json has a value using optional binding.
                 if let parseJSON = json {
-                    // Okay, the parsedJSON is here, let's get the value for 'success' out of it
+                    // Okay, the parsedJSON is here, let's get the values
                     var items = parseJSON["items"] as! NSArray
                     println("Items: \(items)")
                     dispatch_async(dispatch_get_main_queue()) {
                         self.drawGraph(items)
                     }
                     
-                    let item = items.firstObject as! NSDictionary
+                    let item = items.lastObject as! NSDictionary
                     dispatch_async(dispatch_get_main_queue()) {
                         self.refreshLabel(item)
                     }

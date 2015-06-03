@@ -25,6 +25,7 @@
 		B66325E61AF6D51A006F313A /* BEMLine.m in Sources */ = {isa = PBXBuildFile; fileRef = B66325DF1AF6D51A006F313A /* BEMLine.m */; };
 		B66325E71AF6D51A006F313A /* BEMPermanentPopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = B66325E11AF6D51A006F313A /* BEMPermanentPopupView.m */; };
 		B66325E81AF6D51A006F313A /* BEMSimpleLineGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = B66325E31AF6D51A006F313A /* BEMSimpleLineGraphView.m */; };
+		B66EE6031B1E49CC008CDBDF /* InsulinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66EE6021B1E49CC008CDBDF /* InsulinViewController.swift */; };
 		B6797FB21AF29DF700516697 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6797FB11AF29DF700516697 /* AppDelegate.swift */; };
 		B6797FB51AF29DF700516697 /* Yoda_Demo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B6797FB31AF29DF700516697 /* Yoda_Demo.xcdatamodeld */; };
 		B6797FBA1AF29DF700516697 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6797FB81AF29DF700516697 /* Main.storyboard */; };
@@ -100,6 +101,7 @@
 		B66325E11AF6D51A006F313A /* BEMPermanentPopupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEMPermanentPopupView.m; sourceTree = "<group>"; };
 		B66325E21AF6D51A006F313A /* BEMSimpleLineGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEMSimpleLineGraphView.h; sourceTree = "<group>"; };
 		B66325E31AF6D51A006F313A /* BEMSimpleLineGraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEMSimpleLineGraphView.m; sourceTree = "<group>"; };
+		B66EE6021B1E49CC008CDBDF /* InsulinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsulinViewController.swift; sourceTree = "<group>"; };
 		B6788C3A1B0FE49800E3BE2B /* YodaDemo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YodaDemo.h; sourceTree = "<group>"; };
 		B6797FAC1AF29DF700516697 /* Yoda Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Yoda Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6797FB01AF29DF700516697 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -184,7 +186,6 @@
 			isa = PBXGroup;
 			children = (
 				B6D9F48F1AFFB3FF0058B643 /* PeripheralViewController.swift */,
-				B6797FB11AF29DF700516697 /* AppDelegate.swift */,
 				B6797FD91AF2A4D200516697 /* FoodLibraryTableViewController.swift */,
 				B67980011AF2BD6600516697 /* YodaViewController.swift */,
 				B61B18F41AFBD88300E2C72B /* DetailViewController.swift */,
@@ -192,6 +193,7 @@
 				B66325D61AF6CD61006F313A /* VitalsViewController.swift */,
 				B61D60851B0E69DA0026031D /* Vitals2ViewController.swift */,
 				B68F560B1B175AEA0078247F /* GlucoseViewController.swift */,
+				B66EE6021B1E49CC008CDBDF /* InsulinViewController.swift */,
 				B68F560D1B1899110078247F /* SettingsViewController.swift */,
 			);
 			name = Views;
@@ -230,6 +232,7 @@
 		B6797FAE1AF29DF700516697 /* Yoda Demo */ = {
 			isa = PBXGroup;
 			children = (
+				B6797FB11AF29DF700516697 /* AppDelegate.swift */,
 				B6797FD41AF29F8300516697 /* Yoda App Classes */,
 				B66325D81AF6CD79006F313A /* Views */,
 				B6797FFB1AF2BCD300516697 /* Food Thumbnails */,
@@ -496,6 +499,7 @@
 				B6797FD61AF29F9900516697 /* food.swift in Sources */,
 				B66325E41AF6D51A006F313A /* BEMAverageLine.m in Sources */,
 				B61D60891B0FC5080026031D /* UARTPeripheral.m in Sources */,
+				B66EE6031B1E49CC008CDBDF /* InsulinViewController.swift in Sources */,
 				B689D5111B16322900B24E86 /* UUBar.m in Sources */,
 				B6D9F4901AFFB3FF0058B643 /* PeripheralViewController.swift in Sources */,
 				B689D5131B16322900B24E86 /* UUChart.m in Sources */,

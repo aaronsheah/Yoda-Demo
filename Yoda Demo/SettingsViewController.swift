@@ -8,12 +8,25 @@
 
 import UIKit
 
+var bt:Bool = false
+var wifi:Bool = true
+
 class SettingsViewController: UIViewController {
+
+    @IBOutlet weak var wifiSwitch: UISwitch!
+    @IBAction func wifiSwitchToggle(sender: AnyObject) {
+        wifi = wifiSwitch.on
+    }
+    @IBOutlet weak var btSwitch: UISwitch!
+    @IBAction func btSwitchToggle(sender: AnyObject) {
+        bt = btSwitch.on
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
     }
 
     override func didReceiveMemoryWarning() {
