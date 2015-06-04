@@ -8,12 +8,20 @@
 
 import UIKit
 
+var glucoseLevels:NSMutableArray = []
+var insulinLevels:NSMutableArray = []
+
+var startDateTime:String = ""
+var lastValueDate = ""
+
+var inboxGI:NSMutableArray = []
+var timerSet = false
+var timer = NSTimer()
+
 class Vitals2ViewController: UIViewController, BEMSimpleLineGraphDelegate {
-    var timer = NSTimer()
+    var graphRefreshTimer = NSTimer()
 
-    var glucoseLevels:NSMutableArray = [0,0]
-    var insulinLevels:NSMutableArray = [0,0]
-
+    var time:NSMutableArray = []
     var n_values:Int = 0
     
     @IBOutlet weak var glucLabel: UILabel!
@@ -24,17 +32,48 @@ class Vitals2ViewController: UIViewController, BEMSimpleLineGraphDelegate {
     @IBOutlet weak var lastNSegmentedControl: UISegmentedControl!
     @IBAction func lastNValueChanged(sender: AnyObject) {
         n_values = lastNSegmentedControl.selectedSegmentIndex
-        println(n_values)
-        refreshValues(0)
+
+        glucGraph.reloadGraph()
+        insuGraph.reloadGraph()
     }
-    
-    
+
+    /**********************************/
+    /*** UIVIewController Methods ***/
+    /**********************************/
     override func viewDidLoad() {
         super.viewDidLoad()
-        lastNValueChanged(0)
-        setupGraph()
-        // timer = NSTimer.scheduledTimerWithTimeInterval(2, target:self, selector: Selector("refreshGraph:"), userInfo: nil, repeats: true)
 
+        // Amount of 5 minute intervals in a day
+        var capacity = 24 * 60 / 5
+        // Initialise array
+
+        if time.count == 0 {
+            for x in 0...capacity-1 {
+                time.addObject(capacity-x as Int)
+            }    
+        }
+
+        if glucoseLevels.count == 0 {
+            for x in 0...capacity-1 {
+                glucoseLevels.addObject(0 as Float)
+            }    
+        }
+
+        if insulinLevels.count == 0 {
+            for x in 0...capacity-1 {
+                insulinLevels.addObject(0 as Float)
+            }    
+        }
+        
+        
+        setupGraph()
+        
+        // Get the start of Simulation time
+        if(startDateTime == "") {
+            var components = NSString(string: "\(NSDate())").componentsSeparatedByString(" ")
+            startDateTime = "\(components[0])&\(components[1])"
+            lastValueDate = startDateTime
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,16 +81,86 @@ class Vitals2ViewController: UIViewController, BEMSimpleLineGraphDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewDidAppear(animated: Bool) {
+        
+        /*** Setup top right button to be Play/Pause ***/
+        var buttonPause = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Pause, target: self, action: "pauseButtonPressed")
+        var buttonPlay = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Play, target: self, action: "playButtonPressed")
+        
+        var topRightButton:UIBarButtonItem = UIBarButtonItem()
+        
+        // timer not set = Ready to Play
+        if timerSet == false {
+            topRightButton = buttonPlay
+            graphRefreshTimer.invalidate()
+        }
+        else {
+            topRightButton = buttonPause
+            
+            if !graphRefreshTimer.valid {
+                graphRefreshTimer = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: Selector("refreshGraph"), userInfo: nil, repeats: true)
+            }
+        }
+        self.navigationItem.setRightBarButtonItem(topRightButton, animated: false)
+        
+        refreshLabel()
+        glucGraph.reloadGraph()
+        insuGraph.reloadGraph()
+    }
+
+    func playButtonPressed() {
+        var buttonPause = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Pause, target: self, action: "pauseButtonPressed")
+        
+        if !timerSet {
+            timer = NSTimer.scheduledTimerWithTimeInterval(2, target:self, selector: Selector("refreshValues:"), userInfo: nil, repeats: true)
+            timerSet = true
+        }
+        
+        graphRefreshTimer = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: Selector("refreshGraph"), userInfo: nil, repeats: true)
+        self.navigationItem.setRightBarButtonItem(buttonPause, animated: true)
+    }
+    func pauseButtonPressed() {
+        var buttonPlay = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Play, target: self, action: "playButtonPressed")
+        
+        if timerSet {
+            timer.invalidate()
+            timerSet = false
+        }
+        
+        graphRefreshTimer.invalidate()
+        self.navigationItem.setRightBarButtonItem(buttonPlay, animated: true)
+    }
+
+    func refreshGraph() {
+        refreshLabel()
+        
+        glucGraph.reloadGraph()
+        insuGraph.reloadGraph()
+    }
+    
     /***********************/
     /*** Graph Methods ***/
     /***********************/
 
     func numberOfPointsInLineGraph(graph: BEMSimpleLineGraphView) -> Int {
-        if graph === glucGraph {
+        if graph == glucGraph || graph == insuGraph{
+            if n_values == 0 {
+                // 3 hrs
+                return 3 * 60 / 5
+            }
+            else if n_values == 1 {
+                // 6 hrs
+                return 6 * 60 / 5
+            }
+            else if n_values == 2 {
+                // 12 hrs
+                return 12 * 60 / 5
+            }
+            else if n_values == 3 {
+                // 24 hrs
+                return 24 * 60 / 5
+            }
             return glucoseLevels.count
-        }
-        else if graph == insuGraph {
-            return insulinLevels.count
         }
         else {
             return 0
@@ -61,9 +170,41 @@ class Vitals2ViewController: UIViewController, BEMSimpleLineGraphDelegate {
     func lineGraph(graph: BEMSimpleLineGraphView, valueForPointAtIndex index: Int) -> CGFloat {
         
         if graph === glucGraph {
+            if n_values == 0 {
+                // 3 hrs
+                return CGFloat(glucoseLevels.objectAtIndex(index + 251) as! NSNumber)
+            }
+            else if n_values == 1 {
+                // 6 hrs
+                return CGFloat(glucoseLevels.objectAtIndex(index + 215) as! NSNumber)
+            }
+            else if n_values == 2 {
+                // 12 hrs
+                return CGFloat(glucoseLevels.objectAtIndex(index + 143) as! NSNumber)
+            }
+            else if n_values == 3 {
+                // 24 hrs
+                return CGFloat(glucoseLevels.objectAtIndex(index) as! NSNumber)
+            }
             return CGFloat(glucoseLevels.objectAtIndex(index) as! NSNumber)
         }
         else if graph == insuGraph {
+            if n_values == 0 {
+                // 3 hrs
+                return CGFloat(insulinLevels.objectAtIndex(index + 251) as! NSNumber)
+            }
+            else if n_values == 1 {
+                // 6 hrs
+                return CGFloat(insulinLevels.objectAtIndex(index + 215) as! NSNumber)
+            }
+            else if n_values == 2 {
+                // 12 hrs
+                return CGFloat(insulinLevels.objectAtIndex(index + 143) as! NSNumber)
+            }
+            else if n_values == 3 {
+                // 24 hrs
+                return CGFloat(insulinLevels.objectAtIndex(index) as! NSNumber)
+            }
             return CGFloat(insulinLevels.objectAtIndex(index) as! NSNumber)
         }
         else {
@@ -71,7 +212,25 @@ class Vitals2ViewController: UIViewController, BEMSimpleLineGraphDelegate {
         }
     }
     func lineGraph(graph: BEMSimpleLineGraphView, labelOnXAxisForIndex index: Int) -> String {
-        return "\(index * 5)"
+        if graph == glucGraph || graph == insuGraph{
+            if n_values == 0 {
+                // 3 hrs
+                return "-\(175 - index*5)"
+            }
+            else if n_values == 1 {
+                // 6 hrs
+                return "-\(360 - index*5)"
+            }
+            else if n_values == 2 {
+                // 12 hrs
+                return "-\(720 - index*5)"
+            }
+            else if n_values == 3 {
+                // 24 hrs
+                return "-\(1440 - index*5)"
+            }
+        }
+        return ""
     }
 
     func numberOfGapsBetweenLabelsOnLineGraph(graph: BEMSimpleLineGraphView) -> Int {
@@ -115,35 +274,44 @@ class Vitals2ViewController: UIViewController, BEMSimpleLineGraphDelegate {
         insuGraph.formatStringForValues = "%.1f"
     }
 
-    func refreshLabel(item:NSDictionary) {
-        let gluc = item["gluc"] as? NSString
-        if gluc != nil {
-            glucLabel.text = NSString(format: "%.2f", (gluc!).floatValue) as String
-        }
+    func refreshLabel() {
+        let gluc = NSString(format: "%.2f", glucoseLevels.lastObject as! Float)
+        let insu = NSString(format: "%.1f", insulinLevels.lastObject as! Float)
         
-        let insu = item["insu"] as? NSString
-        if gluc != nil {
-            insuLabel.text = NSString(format: "%.1f", (insu!).floatValue) as String
-        }
+        glucLabel.text = "\(gluc)"
+        insuLabel.text = "\(insu)"
     }
     
     func drawGraph(items:NSArray) {
-        glucoseLevels.removeAllObjects()
-        insulinLevels.removeAllObjects()
-        
         for item in items {
-            let gluc = (item["gluc"] as! NSString).floatValue
-            let insu = (item["insu"] as! NSString).floatValue
-            
-            glucoseLevels.addObject(gluc)
-            insulinLevels.addObject(insu)
-        }
+            var date = item["date"] as! String
+            if  date > startDateTime && date > lastValueDate {
+                let gluc = (item["gluc"] as! NSString).floatValue
+                glucoseLevels.removeObjectAtIndex(0)
+                glucoseLevels.addObject(gluc)
 
+                let insu = (item["insu"] as! NSString).floatValue
+                insulinLevels.removeObjectAtIndex(0)
+                insulinLevels.addObject(insu)
+
+                lastValueDate = date
+            }
+        }
         glucGraph.reloadGraph()
         insuGraph.reloadGraph()
     }
     
+    /**********************/
+    /*** Refresh Values ***/
+    /**********************/
     @IBAction func refreshValues(sender: AnyObject) {
+        if bt {
+            println("JSON from BT")
+            var inbox = NSArray(array: inboxGI)
+            inboxGI.removeAllObjects()
+            drawGraph(inbox)
+            return
+        }
         var api = "https://ic-yoda.appspot.com/_ah/api/icYodaApi/v1/glucInsuValues"
         var request = NSMutableURLRequest(URL: NSURL(string: api)!)
         
@@ -182,14 +350,23 @@ class Vitals2ViewController: UIViewController, BEMSimpleLineGraphDelegate {
                 if let parseJSON = json {
                     // Okay, the parsedJSON is here, let's get the values
                     var items = parseJSON["items"] as! NSArray
-                    println("Items: \(items)")
+//                    println("Items: \(items)")
+                    println("JSON from WIFI")
                     dispatch_async(dispatch_get_main_queue()) {
-                        self.drawGraph(items)
-                    }
-                    
-                    let item = items.lastObject as! NSDictionary
-                    dispatch_async(dispatch_get_main_queue()) {
-                        self.refreshLabel(item)
+                        for item in items {
+                            var date = item["date"] as! String
+                            if  date > startDateTime && date > lastValueDate {
+                                let gluc = (item["gluc"] as! NSString).floatValue
+                                glucoseLevels.removeObjectAtIndex(0)
+                                glucoseLevels.addObject(gluc)
+                                
+                                let insu = (item["insu"] as! NSString).floatValue
+                                insulinLevels.removeObjectAtIndex(0)
+                                insulinLevels.addObject(insu)
+                                
+                                lastValueDate = date
+                            }
+                        }
                     }
                 }
                 else {
@@ -211,36 +388,4 @@ class Vitals2ViewController: UIViewController, BEMSimpleLineGraphDelegate {
         // Pass the selected object to the new view controller.
     }
     */
-    
-    func didReceiveData(string: String!) {
-        addTextToConsole(string, dataType: .RX)
-    }
-    
-    /****************************************************************/
-    /**                                                            **/
-    /****************************************************************/
-    
-    func addTextToConsole(string:NSString, dataType:ConsoleDataType) {
-        var direction:NSString
-        
-        switch dataType {
-        case .RX:
-            direction = "RX"
-            break
-        case .TX:
-            direction = "TX"
-            break
-        case .LOGGING:
-            direction = "LOGGING"
-        }
-        
-        var formatter:NSDateFormatter
-        formatter = NSDateFormatter()
-        formatter.dateFormat = "HH:mm:ss.SSS"
-        
-        var output:NSString = "[\(formatter.stringFromDate(NSDate()))] \(direction) \(string)"
-        
-        println(output)
-    }
-
 }

@@ -116,6 +116,24 @@ class FoodLibraryTableViewController: UITableViewController, UITableViewDelegate
         
         var input = NSString(string: string).componentsSeparatedByString(",")
         
+        if (input.count == 1){
+            let connection = (input[0] as! NSString).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+            
+            switch connection {
+                case "bt":
+                    println("Switched to BT")
+                    bt = true
+                    wifi = false
+                case "wifi":
+                    println("Switched to WIFI")
+                    bt = false
+                    wifi = true
+                default:
+                    println("Unknown command '\(connection)'")
+                
+            }
+        }
+        
         if input.count != 2 {
             return
         }

@@ -8,15 +8,6 @@
 
 import UIKit
 
-var startDateTime:String = ""
-var lastValueDate = ""
-
-var inboxGI:NSMutableArray = []
-var timerSet = false
-var timer = NSTimer()
-
-var glucoseLevels:NSMutableArray = []
-
 class GlucoseViewController: UIViewController, BEMSimpleLineGraphDelegate {
     
     var time:NSMutableArray = []
@@ -29,17 +20,19 @@ class GlucoseViewController: UIViewController, BEMSimpleLineGraphDelegate {
     @IBOutlet weak var lastNSegmentedControl: UISegmentedControl!
     @IBAction func lastNValueChanged(sender: AnyObject) {
         n_values = lastNSegmentedControl.selectedSegmentIndex
-        println(n_values)
-        refreshValues(0)
+        
+        glucGraph.reloadGraph()
     }
 
     @IBAction func clearValues(sender: AnyObject) {
         glucoseLevels.removeAllObjects()
+        insulinLevels.removeAllObjects()
         
         // Amount of 5 minute intervals in a day
         var capacity = 24 * 60 / 5
         // Initialise array
         for x in 0...capacity-1 {
+            insulinLevels.addObject(0 as Float)
             glucoseLevels.addObject(0 as Float)
         }
         
@@ -75,9 +68,22 @@ class GlucoseViewController: UIViewController, BEMSimpleLineGraphDelegate {
         // Amount of 5 minute intervals in a day
         var capacity = 24 * 60 / 5
         // Initialise array
-        for x in 0...capacity-1 {
-            glucoseLevels.addObject(0 as Float)
-            time.addObject(capacity-x as Int)
+        if time.count == 0 {
+            for x in 0...capacity-1 {
+                time.addObject(capacity-x as Int)
+            }    
+        }
+
+        if glucoseLevels.count == 0 {
+            for x in 0...capacity-1 {
+                glucoseLevels.addObject(0 as Float)
+            }    
+        }
+
+        if insulinLevels.count == 0 {
+            for x in 0...capacity-1 {
+                insulinLevels.addObject(0 as Float)
+            }    
         }
         
         setupGraph()
@@ -111,7 +117,7 @@ class GlucoseViewController: UIViewController, BEMSimpleLineGraphDelegate {
                 glucGraphRefreshTimer = NSTimer.scheduledTimerWithTimeInterval(2, target:self, selector: Selector("refreshGlucGraph"), userInfo: nil, repeats: true)
             }
         }
-        self.navigationItem.setRightBarButtonItem(topRightButton, animated: true)
+        self.navigationItem.setRightBarButtonItem(topRightButton, animated: false)
         
     }
     
@@ -150,7 +156,7 @@ class GlucoseViewController: UIViewController, BEMSimpleLineGraphDelegate {
     }
 
     func numberOfPointsInLineGraph(graph: BEMSimpleLineGraphView) -> Int {
-        if graph === glucGraph {
+        if graph == glucGraph {
             if n_values == 0 {
                 // 3 hrs
                 return 3 * 60 / 5
@@ -248,15 +254,13 @@ class GlucoseViewController: UIViewController, BEMSimpleLineGraphDelegate {
         return 0
     }
     
-    func maxValueForLineGraph(graph: BEMSimpleLineGraphView) -> CGFloat {
-        return 15
-    }
+//    func maxValueForLineGraph(graph: BEMSimpleLineGraphView) -> CGFloat {
+//        return 15
+//    }
     
-    func refreshLabel(item:NSDictionary) {
-        let gluc = item["gluc"] as? NSString
-        if gluc != nil {
-            glucLabel.text = NSString(format: "%.2f", (gluc!).floatValue) as String
-        }
+    func refreshLabel() {
+        let gluc = NSString(format: "%.2f", glucoseLevels.lastObject as! Float)
+        glucLabel.text = "\(gluc)"
     }
     
     func drawGraph(items:NSArray) {
@@ -273,9 +277,9 @@ class GlucoseViewController: UIViewController, BEMSimpleLineGraphDelegate {
                 insulinLevels.addObject(insu)
 
                 lastValueDate = date
-                refreshLabel(item as! NSDictionary)
             }
         }
+        refreshLabel()
         glucGraph.reloadGraph()
     }
     
@@ -337,7 +341,6 @@ class GlucoseViewController: UIViewController, BEMSimpleLineGraphDelegate {
                                 insulinLevels.addObject(insu)
                                 
                                 lastValueDate = date
-                                self.refreshLabel(item as! NSDictionary)
                             }
                         }
                     }

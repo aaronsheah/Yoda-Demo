@@ -8,14 +8,14 @@
 
 import UIKit
 
-var insulinLevels:NSMutableArray = []
-
 class InsulinViewController: UIViewController,BEMSimpleLineGraphDelegate {
     
     var time:NSMutableArray = []
     var n_values:Int = 0
     
     var insuGraphRefreshTimer = NSTimer()
+    
+    @IBOutlet weak var insuLabel: UILabel!
     
     @IBOutlet weak var insuGraph: BEMSimpleLineGraphView!
     
@@ -27,6 +27,21 @@ class InsulinViewController: UIViewController,BEMSimpleLineGraphDelegate {
         insuGraph.reloadGraph()
     }
     
+    @IBAction func clearValues(sender: AnyObject) {
+        glucoseLevels.removeAllObjects()
+        insulinLevels.removeAllObjects()
+        
+        // Amount of 5 minute intervals in a day
+        var capacity = 24 * 60 / 5
+        // Initialise array
+        for x in 0...capacity-1 {
+            insulinLevels.addObject(0 as Float)
+            glucoseLevels.addObject(0 as Float)
+        }
+        
+        insuGraph.reloadGraph()
+    }
+
     func playButtonPressed() {
         var buttonPause = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Pause, target: self, action: "pauseButtonPressed")
         
@@ -60,9 +75,22 @@ class InsulinViewController: UIViewController,BEMSimpleLineGraphDelegate {
         // Amount of 5 minute intervals in a day
         var capacity = 24 * 60 / 5
         // Initialise array
-        for x in 0...capacity-1 {
-            insulinLevels.addObject(0 as Float)
-            time.addObject(capacity-x as Int)
+        if time.count == 0 {
+            for x in 0...capacity-1 {
+                time.addObject(capacity-x as Int)
+            }    
+        }
+
+        if glucoseLevels.count == 0 {
+            for x in 0...capacity-1 {
+                glucoseLevels.addObject(0 as Float)
+            }    
+        }
+
+        if insulinLevels.count == 0 {
+            for x in 0...capacity-1 {
+                insulinLevels.addObject(0 as Float)
+            }    
         }
 
         setupGraph()
@@ -99,6 +127,14 @@ class InsulinViewController: UIViewController,BEMSimpleLineGraphDelegate {
     /*******************************/
     func refreshInsuGraph() {
         insuGraph.reloadGraph()
+        
+        refreshLabel()
+    }
+    
+    func refreshLabel() {
+        let insu = NSString(format: "%.1f", insulinLevels.lastObject as! Float)
+        
+        insuLabel.text = "\(insu)"
     }
     
     func setupGraph() {
@@ -141,7 +177,7 @@ class InsulinViewController: UIViewController,BEMSimpleLineGraphDelegate {
     }
     
     func lineGraph(graph: BEMSimpleLineGraphView, valueForPointAtIndex index: Int) -> CGFloat {
-        if graph === insuGraph {
+        if graph == insuGraph {
             if n_values == 0 {
                 // 3 hrs
                 return CGFloat(insulinLevels.objectAtIndex(index + 251) as! NSNumber)

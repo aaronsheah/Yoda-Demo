@@ -20,6 +20,7 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var btSwitch: UISwitch!
     @IBAction func btSwitchToggle(sender: AnyObject) {
         bt = btSwitch.on
+        println("\(bt)")
     }
 
     override func viewDidLoad() {
@@ -32,6 +33,13 @@ class SettingsViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(true)
+        
+        wifiSwitch.setOn(wifi, animated: false)
+        btSwitch.setOn(bt, animated: false)
     }
     
 
